@@ -1,0 +1,46 @@
+<div class="detail-page">
+  <div class="detail-card">
+    @if (loading) {
+      <p class="status">Cargando usuario...</p>
+    }
+
+    @if (!loading && error) {
+      <p class="status error">{{ error }}</p>
+      <a class="back-link" [routerLink]="['/about']">Volver a usuarios</a>
+    }
+
+    @if (!loading && user) {
+      <div class="header">
+        <h1>{{ user.name }}</h1>
+        <p class="username">{{ '@' + user.username }}</p>
+      </div>
+
+      <div class="grid">
+        <section class="panel">
+          <h2>Contacto</h2>
+          <p><span>Email:</span> {{ user.email }}</p>
+          <p><span>Telefono:</span> {{ user.phone }}</p>
+          <p><span>Web:</span> {{ user.website }}</p>
+        </section>
+
+        <section class="panel">
+          <h2>Direccion</h2>
+          <p><span>Calle:</span> {{ user.address.street }}</p>
+          <p><span>Suite:</span> {{ user.address.suite }}</p>
+          <p><span>Ciudad:</span> {{ user.address.city }}</p>
+          <p><span>CP:</span> {{ user.address.zipcode }}</p>
+          <p><span>Geo:</span> {{ user.address.geo.lat }}, {{ user.address.geo.lng }}</p>
+        </section>
+
+        <section class="panel full">
+          <h2>Empresa</h2>
+          <p><span>Nombre:</span> {{ user.company.name }}</p>
+          <p><span>Catch Phrase:</span> {{ user.company.catchPhrase }}</p>
+          <p><span>BS:</span> {{ user.company.bs }}</p>
+        </section>
+      </div>
+
+      <a class="back-link" [routerLink]="['/about']">Volver a usuarios</a>
+    }
+  </div>
+</div>

@@ -9,13 +9,13 @@
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;    /* Centra verticalmente */
-  align-items: center;        /* Centra horizontalmente */
+  justify-content: center;   
+  align-items: center;        
 }
 
 .txtBienvenida {
   font-size: 2rem;
-  margin: 0 0 24px 0;         /* Espacio solo debajo */
+  margin: 0 0 24px 0;         
   text-align: center;
   font-weight: 600;
   color: #ffb400;
@@ -26,7 +26,7 @@
   flex-wrap: wrap;
   gap: 24px;
   justify-content: center;
-  margin: 0;                  /* Sin margen extra */
+  margin: 0;                  
 }
 
 @media (max-width: 900px) {

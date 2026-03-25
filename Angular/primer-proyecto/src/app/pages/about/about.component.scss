@@ -1,5 +1,5 @@
 :host {
-  min-height: calc(100vh - 72px); 
+  min-height: calc(100vh - 72px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,8 +9,8 @@
 
 .about-container {
   width: 100%;
-  max-width: 700px;
-  margin: 0; 
+  max-width: 900px;
+  margin: 0;
   background: #232946;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(35, 41, 70, 0.18);
@@ -24,27 +24,46 @@
   margin-bottom: 18px;
 }
 
-.about-container h2 {
-  color: #4f8cff;
-  margin-top: 32px;
-  margin-bottom: 12px;
+table[mat-table] {
+  width: 100%;
+  background: #1b2240;
+  border-radius: 12px;
+  overflow: hidden;
+  border-collapse: collapse;
 }
 
-.about-container ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px;
-}
-
-.about-container li {
+tr[mat-header-row] {
   background: #181c24;
-  border-radius: 8px;
-  padding: 8px 18px;
+}
+
+th[mat-header-cell] {
   color: #ffb400;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1rem;
+  border-bottom: 2px solid #4f8cff;
+  padding: 12px 14px;
+}
+
+td[mat-cell] {
+  color: #f3f3f3;
+  border-bottom: 1px solid rgba(79, 140, 255, 0.2);
+  padding: 12px 14px;
+}
+
+tr[mat-row]:last-child td[mat-cell] {
+  border-bottom: none;
+}
+
+.clickable-row {
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.clickable-row:hover {
+  background: rgba(79, 140, 255, 0.12);
+}
+
+.clickable-row:focus-visible {
+  outline: 2px solid #ffb400;
+  outline-offset: -2px;
 }
