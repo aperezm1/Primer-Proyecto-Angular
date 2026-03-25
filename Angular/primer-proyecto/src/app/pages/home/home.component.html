@@ -1,23 +1,28 @@
-<p class="txtBienvenida">¡Bienvenido/a a la página de {{ autor }}!</p>
+<div class="main-content">
+  <p class="txtBienvenida">¡Bienvenido/a a la página de {{ autor }}!</p>
 
-<div class="cards-container">
-  <app-card
-    imgSrc="https://angular.io/assets/images/logos/angular/angular.png"
-    titulo="Angular"
-    texto="Framework para aplicaciones web modernas.">
-  </app-card>
+  <div class="cards-container">
+    <app-card
+      imgSrc="https://angular.io/assets/images/logos/angular/angular.png"
+      titulo="Angular"
+      texto="Framework para aplicaciones web modernas."
+      link="https://angular.io/docs">
+    </app-card>
 
-  <app-card
-    imgSrc="https://images.prismic.io/staticmania/Z1lxIZbqstJ98T6S_spring-boot.jpg?auto=format,compress"
-    titulo="Spring Boot"
-    texto="Framework para crear APIs y servicios backend en Java.">
-  </app-card>
+    <app-card
+      imgSrc="https://images.prismic.io/staticmania/Z1lxIZbqstJ98T6S_spring-boot.jpg?auto=format,compress"
+      titulo="Spring Boot"
+      texto="Framework para crear APIs y servicios backend en Java."
+      link="https://spring.io/projects/spring-boot">
+    </app-card>
 
-  <app-card
-    imgSrc="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png"
-    titulo="Docker"
-    texto="Plataforma para contenerización y despliegue de aplicaciones.">
-  </app-card>
+    <app-card
+      imgSrc="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png"
+      titulo="Docker"
+      texto="Plataforma para contenerización y despliegue de aplicaciones."
+      link="https://www.docker.com/">
+    </app-card>
+  </div>
 </div>
 
 <app-footer></app-footer>

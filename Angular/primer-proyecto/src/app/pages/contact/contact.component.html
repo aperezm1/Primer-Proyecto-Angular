@@ -1,1 +1,36 @@
-<p>contact works!</p>
+<div class="main-content">
+  <div class="form-container">
+    <h1>Contacto</h1>
+
+    <form [formGroup]="form" (ngSubmit)="enviar()" novalidate>
+      <label for="nombre">Nombre</label>
+      <input id="nombre" type="text" formControlName="nombre" />
+
+      @if (form.controls.nombre.touched && form.controls.nombre.invalid) {
+        <p>El nombre es obligatorio (mínimo 2 caracteres).</p>
+      }
+
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+
+      @if (form.controls.email.touched && form.controls.email.invalid) {
+        <p>Introduce un email válido.</p>
+      }
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" rows="5" formControlName="mensaje"></textarea>
+
+      @if (form.controls.mensaje.touched && form.controls.mensaje.invalid) {
+        <p>El mensaje debe tener al menos 10 caracteres.</p>
+      }
+
+      <button type="submit">Enviar</button>
+    </form>
+
+    @if (enviado) {
+      <p class="ok-msg">Formulario enviado correctamente.</p>
+    }
+  </div>
+</div>
+
+<app-footer></app-footer>

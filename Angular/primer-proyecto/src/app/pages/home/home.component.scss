@@ -1,24 +1,32 @@
 :host {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
+  background: #181c24;
+}
+
+.main-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* Centra verticalmente */
+  align-items: center;        /* Centra horizontalmente */
 }
 
 .txtBienvenida {
   font-size: 2rem;
-  margin: 50px 0;
+  margin: 0 0 24px 0;         /* Espacio solo debajo */
   text-align: center;
   font-weight: 600;
-  color: #4f8cff;
+  color: #ffb400;
 }
 
 .cards-container {
-  flex: 1 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
   justify-content: center;
-  margin: 32px 0;
+  margin: 0;                  /* Sin margen extra */
 }
 
 @media (max-width: 900px) {
@@ -33,4 +41,8 @@
     align-items: center;
     gap: 20px;
   }
+}
+
+app-footer {
+  flex-shrink: 0;
 }
