@@ -8,20 +8,30 @@
 }
 
 .about-container {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
   width: 100%;
   max-width: 900px;
   margin: 0;
   background: #232946;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(35, 41, 70, 0.18);
-  padding: 36px 32px;
+  padding: 0 32px 36px 32px;
   color: #f3f3f3;
   text-align: center;
+  min-height: min(82vh, 760px);
+}
+
+.h1-row {
+  display: grid;
+  place-items: center;
+  width: 100%;
 }
 
 .about-container h1 {
   color: #ffb400;
-  margin-bottom: 18px;
+  margin: 0;
+  line-height: 1.1;
 }
 
 table[mat-table] {
@@ -66,4 +76,90 @@ tr[mat-row]:last-child td[mat-cell] {
 .clickable-row:focus-visible {
   outline: 2px solid #ffb400;
   outline-offset: -2px;
+}
+
+.filter-input {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto 24px auto;
+  display: block;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #181c24;
+  color: #f3f3f3;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(79, 140, 255, 0.08);
+  transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+
+  &::placeholder {
+    color: #8da1c9;
+    opacity: 1;
+    font-style: italic;
+  }
+
+  &:focus {
+    outline: none;
+    background: #232946;
+    box-shadow: 0 0 0 2px #ffb400;
+    border: 1.5px solid #ffb400;
+  }
+}
+
+.filter-select {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto 24px auto;
+  display: block;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #181c24;
+  color: #f3f3f3;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(79, 140, 255, 0.08);
+  transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+
+  &:focus {
+    outline: none;
+    background: #232946;
+    box-shadow: 0 0 0 2px #ffb400;
+    border: 1.5px solid #ffb400;
+  }
+}
+
+.filters-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 24px;
+
+  .filter-input,
+  .filter-select {
+    margin: 0;
+    flex: 1 1 0;
+    max-width: 350px;
+  }
+}
+
+.reset-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #ffb400;
+  color: #232946;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  margin: 0;
+  height: 48px;
+  align-self: center;
+
+  &:hover {
+    background: #ffd580;
+    color: #181c24;
+    box-shadow: 0 0 0 2px #ffb400;
+    outline: none;
+  }
 }

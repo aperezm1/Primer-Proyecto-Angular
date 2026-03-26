@@ -16,9 +16,36 @@
     </ul>
   </div>-->
 
-  <h1>Usuarios</h1>
+  <div class="h1-row">
+    <h1>Usuarios</h1>
+  </div>
 
-  <table mat-table [dataSource]="users" class="mat-elevation-z8">
+  <div class="filters-row">
+    <input
+      type="text"
+      placeholder="Filtrar por nombre"
+      [value]="filterText()"
+      (input)="onFilterChange($event)"
+      class="filter-input"
+    />
+
+    <select
+      class="filter-select"
+      [value]="selectedCity()"
+      (change)="onCityChange($event)"
+    >
+      <option value="">Todas las ciudades</option>
+      @for (city of cities(); track city) {
+        <option [value]="city">{{ city }}</option>
+      }
+    </select>
+
+    <button type="button" class="reset-btn" (click)="resetFilters()">
+      Limpiar filtros
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="filteredUsers()" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID</th>
       <td mat-cell *matCellDef="let user">{{ user.id }}</td>
