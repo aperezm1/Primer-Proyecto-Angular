@@ -1,11 +1,12 @@
 :host {
-  min-height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
+  flex: 1;
+  background: #181c24;
 }
 
 .main-content {
-  flex: 1;
+  flex: 1 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,6 +84,5 @@ p {
 }
 
 app-footer {
-  margin-top: auto;
   flex-shrink: 0;
 }

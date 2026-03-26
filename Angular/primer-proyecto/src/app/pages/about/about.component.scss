@@ -1,9 +1,9 @@
 :host {
-  min-height: calc(100vh - 72px);
   display: flex;
   flex-direction: column;
+  flex: 1;
   align-items: center;
-  justify-content: center; /* centrado vertical siempre */
+  justify-content: center;
   padding: 24px;
   box-sizing: border-box;
 }
@@ -11,14 +11,14 @@
 .about-container {
   display: flex;
   flex-direction: column;
-  gap: 0; /* quitamos gap global para controlar espacios exactos */
+  gap: 0;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
   background: #232946;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(35, 41, 70, 0.18);
-  padding: 24px 32px 36px 32px; /* ahora sí hay espacio arriba del título */
+  padding: 24px 32px 36px 32px;
   color: #f3f3f3;
   text-align: center;
 }
@@ -27,8 +27,8 @@
   display: grid;
   place-items: center;
   width: 100%;
-  margin: 0;            /* sin extra */
-  padding: 0 0 24px 0;  /* mismo bloque inferior que superior del contenedor */
+  margin: 0;            
+  padding: 0 0 24px 0;  
 }
 
 .about-container h1 {
