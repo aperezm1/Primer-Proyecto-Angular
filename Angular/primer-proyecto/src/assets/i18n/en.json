@@ -1,0 +1,61 @@
+{
+  "NAV": {
+    "HOME": "Home",
+    "ABOUT": "About",
+    "CONTACT": "Contact"
+  },
+  "HOME": {
+    "WELCOME": "Welcome to {{ autor }}'s page!",
+    "CARD_ANGULAR_TITLE": "Angular",
+    "CARD_ANGULAR_DESC": "Framework for modern web applications.",
+    "CARD_SPRINGBOOT_TITLE": "Spring Boot",
+    "CARD_SPRINGBOOT_DESC": "Framework for creating APIs and backend services in Java.",
+    "CARD_DOCKER_TITLE": "Docker",
+    "CARD_DOCKER_DESC": "Platform for containerization and deployment of applications."
+  },
+  "ABOUT": {
+    "USERS_TITLE": "Users",
+    "FILTER_PLACEHOLDER": "Filter by name",
+    "ALL_CITIES": "All cities",
+    "CLEAR_FILTERS": "Clear filters",
+    "TABLE_ID": "ID",
+    "TABLE_USERNAME": "Username",
+    "TABLE_EMAIL": "Email",
+    "TABLE_PHONE": "Phone"
+  },
+  "CONTACT": {
+    "TITLE": "Contact",
+    "NAME_LABEL": "Name",
+    "NAME_ERROR": "Name is required (minimum 2 characters).",
+    "EMAIL_LABEL": "Email",
+    "EMAIL_ERROR": "Please enter a valid email.",
+    "MESSAGE_LABEL": "Message",
+    "MESSAGE_ERROR": "Message must be at least 10 characters long.",
+    "SUBMIT_BTN": "Submit",
+    "SUCCESS_MSG": "Form sent successfully."
+  },
+  "USER_DETAIL": {
+    "LOADING": "Loading user...",
+    "INVALID_ID": "Invalid user ID.",
+    "LOAD_ERROR": "Could not load the user.",
+    "BACK_LINK": "Back to users",
+    "CONTACT_SECTION": "Contact",
+    "EMAIL_LABEL": "Email",
+    "PHONE_LABEL": "Phone",
+    "WEBSITE_LABEL": "Website",
+    "ADDRESS_SECTION": "Address",
+    "STREET_LABEL": "Street",
+    "SUITE_LABEL": "Suite",
+    "CITY_LABEL": "City",
+    "ZIP_LABEL": "Zip Code",
+    "GEO_LABEL": "Geo",
+    "COMPANY_SECTION": "Company",
+    "COMPANY_NAME_LABEL": "Name",
+    "COMPANY_PHRASE_LABEL": "Catch Phrase",
+    "COMPANY_BS_LABEL": "BS"
+  },
+  "FOOTER": {
+    "AUTHOR": "Adrián Pérez Morales",
+    "CONTACT": "Contact"
+  }
+}

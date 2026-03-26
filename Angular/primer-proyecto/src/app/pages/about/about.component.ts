@@ -1,13 +1,14 @@
-import { Component, inject, OnInit, signal, computed, effect } from '@angular/core';
+import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
+import { TranslatePipe } from '@ngx-translate/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, TranslatePipe],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })

@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
-  imports: [FooterComponent, ReactiveFormsModule],
+  standalone: true,
+  imports: [FooterComponent, ReactiveFormsModule, TranslatePipe],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })

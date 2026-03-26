@@ -1,12 +1,12 @@
 <div class="detail-page">
   <div class="detail-card">
     @if (loading) {
-      <p class="status">Cargando usuario...</p>
+      <p class="status">{{ 'USER_DETAIL.LOADING' | translate }}</p>
     }
 
-    @if (!loading && error) {
-      <p class="status error">{{ error }}</p>
-      <a class="back-link" [routerLink]="['/about']">Volver a usuarios</a>
+    @if (!loading && errorKey) {
+      <p class="status error">{{ errorKey | translate }}</p>
+      <a class="back-link" [routerLink]="['/about']">{{ 'USER_DETAIL.BACK_LINK' | translate }}</a>
     }
 
     @if (!loading && user) {
@@ -17,30 +17,30 @@
 
       <div class="grid">
         <section class="panel">
-          <h2>Contacto</h2>
-          <p><span>Email:</span> {{ user.email }}</p>
-          <p><span>Telefono:</span> {{ user.phone }}</p>
-          <p><span>Web:</span> {{ user.website }}</p>
+          <h2>{{ 'USER_DETAIL.CONTACT_SECTION' | translate }}</h2>
+          <p><span>{{ 'USER_DETAIL.EMAIL_LABEL' | translate }}:</span> {{ user.email }}</p>
+          <p><span>{{ 'USER_DETAIL.PHONE_LABEL' | translate }}:</span> {{ user.phone }}</p>
+          <p><span>{{ 'USER_DETAIL.WEBSITE_LABEL' | translate }}:</span> {{ user.website }}</p>
         </section>
 
         <section class="panel">
-          <h2>Direccion</h2>
-          <p><span>Calle:</span> {{ user.address.street }}</p>
-          <p><span>Suite:</span> {{ user.address.suite }}</p>
-          <p><span>Ciudad:</span> {{ user.address.city }}</p>
-          <p><span>CP:</span> {{ user.address.zipcode }}</p>
-          <p><span>Geo:</span> {{ user.address.geo.lat }}, {{ user.address.geo.lng }}</p>
+          <h2>{{ 'USER_DETAIL.ADDRESS_SECTION' | translate }}</h2>
+          <p><span>{{ 'USER_DETAIL.STREET_LABEL' | translate }}:</span> {{ user.address.street }}</p>
+          <p><span>{{ 'USER_DETAIL.SUITE_LABEL' | translate }}:</span> {{ user.address.suite }}</p>
+          <p><span>{{ 'USER_DETAIL.CITY_LABEL' | translate }}:</span> {{ user.address.city }}</p>
+          <p><span>{{ 'USER_DETAIL.ZIP_LABEL' | translate }}:</span> {{ user.address.zipcode }}</p>
+          <p><span>{{ 'USER_DETAIL.GEO_LABEL' | translate }}:</span> {{ user.address.geo.lat }}, {{ user.address.geo.lng }}</p>
         </section>
 
         <section class="panel full">
-          <h2>Empresa</h2>
-          <p><span>Nombre:</span> {{ user.company.name }}</p>
-          <p><span>Catch Phrase:</span> {{ user.company.catchPhrase }}</p>
-          <p><span>BS:</span> {{ user.company.bs }}</p>
+          <h2>{{ 'USER_DETAIL.COMPANY_SECTION' | translate }}</h2>
+          <p><span>{{ 'USER_DETAIL.COMPANY_NAME_LABEL' | translate }}:</span> {{ user.company.name }}</p>
+          <p><span>{{ 'USER_DETAIL.COMPANY_PHRASE_LABEL' | translate }}:</span> {{ user.company.catchPhrase }}</p>
+          <p><span>{{ 'USER_DETAIL.COMPANY_BS_LABEL' | translate }}:</span> {{ user.company.bs }}</p>
         </section>
       </div>
 
-      <a class="back-link" [routerLink]="['/about']">Volver a usuarios</a>
+      <a class="back-link" [routerLink]="['/about']">{{ 'USER_DETAIL.BACK_LINK' | translate }}</a>
     }
   </div>
 </div>

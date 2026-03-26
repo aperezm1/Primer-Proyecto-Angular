@@ -1,0 +1,61 @@
+{
+  "NAV": {
+    "HOME": "Inicio",
+    "ABOUT": "Acerca de",
+    "CONTACT": "Contacto"
+  },
+  "HOME": {
+    "WELCOME": "¡Bienvenido/a a la página de {{ autor }}!",
+    "CARD_ANGULAR_TITLE": "Angular",
+    "CARD_ANGULAR_DESC": "Framework para aplicaciones web modernas.",
+    "CARD_SPRINGBOOT_TITLE": "Spring Boot",
+    "CARD_SPRINGBOOT_DESC": "Framework para crear APIs y servicios backend en Java.",
+    "CARD_DOCKER_TITLE": "Docker",
+    "CARD_DOCKER_DESC": "Plataforma para contenerización y despliegue de aplicaciones."
+  },
+  "ABOUT": {
+    "USERS_TITLE": "Usuarios",
+    "FILTER_PLACEHOLDER": "Filtrar por nombre",
+    "ALL_CITIES": "Todas las ciudades",
+    "CLEAR_FILTERS": "Limpiar filtros",
+    "TABLE_ID": "ID",
+    "TABLE_USERNAME": "Usuario",
+    "TABLE_EMAIL": "Email",
+    "TABLE_PHONE": "Teléfono"
+  },
+  "CONTACT": {
+    "TITLE": "Contacto",
+    "NAME_LABEL": "Nombre",
+    "NAME_ERROR": "El nombre es obligatorio (mínimo 2 caracteres).",
+    "EMAIL_LABEL": "Email",
+    "EMAIL_ERROR": "Introduce un email válido.",
+    "MESSAGE_LABEL": "Mensaje",
+    "MESSAGE_ERROR": "El mensaje debe tener al menos 10 caracteres.",
+    "SUBMIT_BTN": "Enviar",
+    "SUCCESS_MSG": "Formulario enviado correctamente."
+  },
+  "USER_DETAIL": {
+    "LOADING": "Cargando usuario...",
+    "INVALID_ID": "ID de usuario inválido.",
+    "LOAD_ERROR": "No se pudo cargar el usuario.",
+    "BACK_LINK": "Volver a usuarios",
+    "CONTACT_SECTION": "Contacto",
+    "EMAIL_LABEL": "Email",
+    "PHONE_LABEL": "Teléfono",
+    "WEBSITE_LABEL": "Web",
+    "ADDRESS_SECTION": "Dirección",
+    "STREET_LABEL": "Calle",
+    "SUITE_LABEL": "Suite",
+    "CITY_LABEL": "Ciudad",
+    "ZIP_LABEL": "CP",
+    "GEO_LABEL": "Geo",
+    "COMPANY_SECTION": "Empresa",
+    "COMPANY_NAME_LABEL": "Nombre",
+    "COMPANY_PHRASE_LABEL": "Catch Phrase",
+    "COMPANY_BS_LABEL": "BS"
+  },
+  "FOOTER": {
+    "AUTHOR": "Adrián Pérez Morales",
+    "CONTACT": "Contacto"
+  }
+}
