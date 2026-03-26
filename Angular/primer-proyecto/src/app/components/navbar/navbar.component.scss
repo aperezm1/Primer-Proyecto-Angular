@@ -82,3 +82,19 @@ option {
   border-radius: 2px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.10);
 }
+
+.session-btn {
+  margin-left: 8px;
+  background: #ffb400;
+  color: #232946;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.session-btn:hover {
+  filter: brightness(0.95);
+}
