@@ -4,8 +4,18 @@ nav {
   box-shadow: 0 4px 16px rgba(35,41,70,0.18);
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+.lang-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: static;
+  right: auto;
+  top: auto;
+  transform: none;
 }
 
 .nav-links {
@@ -13,6 +23,13 @@ nav {
   gap: 24px;
   align-items: center;
   justify-content: center;
+  flex: 1 1 auto;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 a {
@@ -50,8 +67,6 @@ select {
   outline: none;
   transition: border 0.2s, box-shadow 0.2s, color 0.2s, background 0.2s;
   box-shadow: 0 2px 8px rgba(255,180,0,0.08);
-  margin-left: auto;
-  margin-right: 0;
 
   &:hover {
     background: #1a1f2b;
@@ -64,16 +79,6 @@ select {
 option {
   background: #232946;
   color: #ffb400;
-}
-
-.lang-select {
-  position: absolute;
-  right: 32px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 .flag-img {
