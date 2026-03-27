@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { DbJsonService } from '../../services/db-json.service';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,24 @@ export class LoginComponent {
   password = '';
   error = '';
   private router = inject(Router);
+  private dbJsonService = inject(DbJsonService);
 
   login(): void {
     if (this.username.trim() && this.password.trim()) {
-      localStorage.setItem('token', 'demo-token');
-      this.router.navigate(['/admin']);
+      this.dbJsonService.login(this.username, this.password).subscribe({
+        next: users => {
+          if (users.length > 0) {
+            localStorage.setItem('token', 'demo-token');
+            this.router.navigate(['/admin']);
+          } else {
+            this.error = 'Usuario o contraseña incorrectos';
+          }
+        },
+        error: () => {
+          this.error = 'Error de conexión';
+        }
+      });
+      
       return;
     }
 
