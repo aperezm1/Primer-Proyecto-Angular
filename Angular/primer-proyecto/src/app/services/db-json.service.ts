@@ -5,8 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DbJsonService {
-  //private apiUrl = 'http://localhost:3000/users';
-  private apiUrl = 'https://primer-proyecto-angular-apm.vercel.app/users';
+  private apiUrl = 'http://localhost:3000/users';
 
   constructor(private http: HttpClient) {}
 
