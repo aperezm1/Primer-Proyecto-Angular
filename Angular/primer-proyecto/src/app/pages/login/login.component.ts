@@ -22,7 +22,7 @@ export class LoginComponent {
       this.dbJsonService.login(this.username, this.password).subscribe({
         next: users => {
           if (users.length > 0) {
-            localStorage.setItem('token', 'demo-token');
+            localStorage.setItem('token', this.username);
             this.router.navigate(['/admin']);
           } else {
             this.error = 'Usuario o contraseña incorrectos';

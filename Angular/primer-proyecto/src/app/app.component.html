@@ -1,2 +1,7 @@
 <app-navbar></app-navbar>
+
+@if (loadingService.loading$ | async) {
+  <app-spinner />
+}
+
 <router-outlet />
