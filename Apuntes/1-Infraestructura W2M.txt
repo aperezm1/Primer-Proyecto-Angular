@@ -1,0 +1,12 @@
+Infraestructura:
+- On premise: servidor propio
+- Cloud: como Azure, AWS
+
+Plataforma:
+- Orquestación de contenedores: Kubernetes, Docker compose
+- Streaming de eventos: Kafka
+- Persistencia y migraciones: PostgreSQL, Liquibase
+
+Software:
+- API/Lógica: Spring boot
+- Interfaz: Angular
