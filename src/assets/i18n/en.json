@@ -6,11 +6,8 @@
   },
   "HOME": {
     "WELCOME": "Welcome to {{ autor }}'s page!",
-    "CARD_ANGULAR_TITLE": "Angular",
     "CARD_ANGULAR_DESC": "Framework for modern web applications.",
-    "CARD_SPRINGBOOT_TITLE": "Spring Boot",
     "CARD_SPRINGBOOT_DESC": "Framework for creating APIs and backend services in Java.",
-    "CARD_DOCKER_TITLE": "Docker",
     "CARD_DOCKER_DESC": "Platform for containerization and deployment of applications."
   },
   "ABOUT": {
@@ -55,7 +52,6 @@
     "COMPANY_BS_LABEL": "BS"
   },
   "FOOTER": {
-    "AUTHOR": "Adrián Pérez Morales",
     "CONTACT": "Contact"
   }
 }
