@@ -2,7 +2,9 @@
   "NAV": {
     "HOME": "Home",
     "ABOUT": "About",
-    "CONTACT": "Contact"
+    "CONTACT": "Contact",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout"
   },
   "HOME": {
     "WELCOME": "Welcome to {{ autor }}'s page!",
@@ -50,6 +52,19 @@
     "COMPANY_NAME_LABEL": "Name",
     "COMPANY_PHRASE_LABEL": "Catch Phrase",
     "COMPANY_BS_LABEL": "BS"
+  },
+  "LOGIN": {
+    "TITLE": "Login",
+    "USERNAME_LABEL": "Username",
+    "PASSWORD_LABEL": "Password",
+    "SUBMIT_BTN": "Login",
+    "ERROR_REQUIRED": "Username and password required",
+    "ERROR_INVALID": "Invalid username or password",
+    "ERROR_CONNECTION": "Connection error"
+  },
+  "ADMIN": {
+    "TITLE": "Admin Panel",
+    "TEXT": "Welcome to the admin panel. Here you can manage your application."
   },
   "FOOTER": {
     "CONTACT": "Contact"

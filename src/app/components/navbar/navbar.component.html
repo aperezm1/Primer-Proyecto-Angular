@@ -28,9 +28,9 @@
 
   <div class="nav-actions">
     @if (isLoggedIn()) {
-      <button type="button" class="session-btn" (click)="logout()">Cerrar sesión</button>
+      <button type="button" class="session-btn" (click)="logout()">{{ 'NAV.LOGOUT' | translate }}</button>
     } @else {
-      <button type="button" class="session-btn" (click)="goToLogin()">Iniciar sesión</button>
+      <button type="button" class="session-btn" (click)="goToLogin()">{{ 'NAV.LOGIN' | translate }}</button>
     }
   </div>
 </nav>
