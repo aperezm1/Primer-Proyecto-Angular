@@ -1,0 +1,123 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 100%;
+    background: #181c24;
+}
+
+.practice-page {
+    flex: 1;
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+    color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+}
+
+.section {
+    background: #232946;
+    border: 2px solid #232946;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(35, 41, 70, 0.18);
+    padding: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.section h2 {
+    margin: 0;
+    color: #ffb400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    background: #1b2240;
+    border: 1px solid #30406a;
+    border-radius: 12px;
+    padding: 16px;
+    min-height: 170px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    border-color: #ffb400;
+    box-shadow: 0 4px 16px rgba(255, 180, 0, 0.12);
+}
+
+.card h3 {
+    margin: 0 0 12px;
+    color: #ffb400;
+}
+
+.card p,
+.card label {
+    color: #f3f3f3;
+    margin: 0 0 8px;
+}
+
+.card button,
+.card input,
+.card select {
+    margin-top: 8px;
+    border: 1px solid #3a4566;
+    border-radius: 8px;
+    padding: 8px 10px;
+    background: #181c24;
+    color: #f3f3f3;
+    font-size: 1rem;
+}
+
+.card button {
+    border: none;
+    background: #ffb400;
+    color: #232946;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.card button:hover {
+    filter: brightness(0.95);
+}
+
+.card input:focus,
+.card select:focus {
+    outline: 2px solid #4f8cff;
+    border-color: #4f8cff;
+}
+
+.focus-input-wide {
+  width: 100%;
+  min-width: 220px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+app-footer {
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .practice-page {
+        padding: 16px;
+    }
+}

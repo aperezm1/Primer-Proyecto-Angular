@@ -1,12 +1,12 @@
 <div class="login-container">
-  <h1>Iniciar sesión</h1>
+  <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
 
   <form (ngSubmit)="login()">
     <input
       type="text"
       [(ngModel)]="username"
       name="username"
-      placeholder="Usuario"
+      placeholder="{{ 'LOGIN.USERNAME_LABEL' | translate }}"
       required
     />
 
@@ -14,14 +14,14 @@
       type="password"
       [(ngModel)]="password"
       name="password"
-      placeholder="Contraseña"
+      placeholder="{{ 'LOGIN.PASSWORD_LABEL' | translate }}"
       required
     />
 
-    <button type="submit">Entrar</button>
+    <button type="submit">{{ 'LOGIN.SUBMIT_BTN' | translate }}</button>
 
     @if (error) {
-      <p class="error">{{ error }}</p>
+      <p class="error">{{ error | translate }}</p>
     }
   </form>
 </div>

@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DbJsonService } from '../../services/db-json.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, TranslatePipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -25,17 +26,17 @@ export class LoginComponent {
             localStorage.setItem('token', this.username);
             this.router.navigate(['/admin']);
           } else {
-            this.error = 'Usuario o contraseña incorrectos';
+            this.error = 'LOGIN.ERROR_INVALID';
           }
         },
         error: () => {
-          this.error = 'Error de conexión';
+          this.error = 'LOGIN.ERROR_CONNECTION';
         }
       });
       
       return;
     }
 
-    this.error = 'Usuario y contraseña requeridos';
+    this.error = 'LOGIN.ERROR_REQUIRED';
   }
 }

@@ -2,7 +2,10 @@
   "NAV": {
     "HOME": "Inicio",
     "ABOUT": "Acerca de",
-    "CONTACT": "Contacto"
+    "CONTACT": "Contacto",
+    "PRACTICE": "Práctica",
+    "LOGIN": "Iniciar sesión",
+    "LOGOUT": "Cerrar sesión"
   },
   "HOME": {
     "WELCOME": "¡Bienvenido/a a la página de {{ autor }}!",
@@ -50,6 +53,33 @@
     "COMPANY_NAME_LABEL": "Nombre",
     "COMPANY_PHRASE_LABEL": "Catch Phrase",
     "COMPANY_BS_LABEL": "BS"
+  },
+  "LOGIN": {
+    "TITLE": "Iniciar sesión",
+    "USERNAME_LABEL": "Usuario",
+    "PASSWORD_LABEL": "Contraseña",
+    "SUBMIT_BTN": "Entrar",
+    "ERROR_REQUIRED": "Usuario y contraseña requeridos",
+    "ERROR_INVALID": "Usuario o contraseña incorrectos",
+    "ERROR_CONNECTION": "Error de conexión"
+  },
+  "ADMIN": {
+    "TITLE": "Panel de administración",
+    "TEXT": "Bienvenido al panel de administración. Aquí puedes gestionar tu aplicación."
+  },
+  "PRACTICE": {
+    "DIRECTIVES" : {
+      "TITLE": "Directivas",
+      "HOVER_ENLARGE_TITLE": "Agrandar al pasar el mouse",
+      "HOVER_ENLARGE_TXT": "Pasa el mouse sobre este texto",
+      "COUNTER_TITLE": "Contador",
+      "FOCUS_INPUT_TITLE": "Enfocar input",
+      "FOCUS_INPUT_DESC": "Este input recibe foco al cargar la página",
+      "SHOW_IF_ROLE_TITLE": "Mostrar si rol",
+      "SHOW_IF_ROLE_LABEL": "Rol requerido:",
+      "SHOW_IF_ROLE_USER": "usuario",
+      "SHOW_IF_ROLE_DESC": "Este texto solo se muestra cuando el valor es admin"
+    }
   },
   "FOOTER": {
     "CONTACT": "Contacto"
