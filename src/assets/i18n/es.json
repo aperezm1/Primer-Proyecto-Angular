@@ -3,6 +3,7 @@
     "HOME": "Inicio",
     "ABOUT": "Acerca de",
     "CONTACT": "Contacto",
+    "PRACTICE": "Práctica",
     "LOGIN": "Iniciar sesión",
     "LOGOUT": "Cerrar sesión"
   },
@@ -65,6 +66,20 @@
   "ADMIN": {
     "TITLE": "Panel de administración",
     "TEXT": "Bienvenido al panel de administración. Aquí puedes gestionar tu aplicación."
+  },
+  "PRACTICE": {
+    "DIRECTIVES" : {
+      "TITLE": "Directivas",
+      "HOVER_ENLARGE_TITLE": "Agrandar al pasar el mouse",
+      "HOVER_ENLARGE_TXT": "Pasa el mouse sobre este texto",
+      "COUNTER_TITLE": "Contador",
+      "FOCUS_INPUT_TITLE": "Enfocar input",
+      "FOCUS_INPUT_DESC": "Este input recibe foco al cargar la página",
+      "SHOW_IF_ROLE_TITLE": "Mostrar si rol",
+      "SHOW_IF_ROLE_LABEL": "Rol requerido:",
+      "SHOW_IF_ROLE_USER": "usuario",
+      "SHOW_IF_ROLE_DESC": "Este texto solo se muestra cuando el valor es admin"
+    }
   },
   "FOOTER": {
     "CONTACT": "Contacto"

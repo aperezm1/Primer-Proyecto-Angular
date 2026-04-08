@@ -1,18 +1,19 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appAgrandarTextoHover]'
+  selector: '[appHoverEnlarge]',
+  standalone: true
 })
-export class AgrandarTextoHoverDirective {
+export class HoverEnlargeDirective {
   constructor(private el: ElementRef) {}
 
   @HostListener('mouseenter')
-  agrandar() {
+  onEnter() {
     this.el.nativeElement.style.fontSize = '2em';
   }
 
   @HostListener('mouseleave')
-  normal() {
+  onLeave() {
     this.el.nativeElement.style.fontSize = '';
   }
 }

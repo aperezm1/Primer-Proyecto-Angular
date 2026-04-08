@@ -3,6 +3,7 @@
     "HOME": "Home",
     "ABOUT": "About",
     "CONTACT": "Contact",
+    "PRACTICE": "Practice",
     "LOGIN": "Login",
     "LOGOUT": "Logout"
   },
@@ -65,6 +66,20 @@
   "ADMIN": {
     "TITLE": "Admin Panel",
     "TEXT": "Welcome to the admin panel. Here you can manage your application."
+  },
+  "PRACTICE": {
+    "DIRECTIVES": {
+      "TITLE": "Directives",
+      "HOVER_ENLARGE_TITLE": "Hover Enlarge",
+      "HOVER_ENLARGE_TXT": "Hover over this text",
+      "COUNTER_TITLE": "Count Clicks",
+      "FOCUS_INPUT_TITLE": "Focus Input",
+      "FOCUS_INPUT_DESC": "This input receives focus on load",
+      "SHOW_IF_ROLE_TITLE": "Show If Role",
+      "SHOW_IF_ROLE_LABEL": "Required role:",
+      "SHOW_IF_ROLE_USER": "user",
+      "SHOW_IF_ROLE_DESC": "This text only shows when the value is admin"
+    }
   },
   "FOOTER": {
     "CONTACT": "Contact"

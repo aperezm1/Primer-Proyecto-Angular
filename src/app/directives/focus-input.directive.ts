@@ -1,10 +1,10 @@
 import { Directive, ElementRef, AfterViewInit } from '@angular/core';
 
 @Directive({
-  selector: '[appEnfocarInput]',
+  selector: '[appFocusInput]',
   standalone: true
 })
-export class EnfocarInputDirective implements AfterViewInit{
+export class FocusInputDirective implements AfterViewInit{
   constructor(private el: ElementRef<HTMLInputElement>) {}
 
   ngAfterViewInit() {

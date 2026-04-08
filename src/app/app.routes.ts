@@ -5,6 +5,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { authGuard } from './guards/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
+import { PracticeComponent } from './pages/practice/practice.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -16,5 +17,6 @@ export const routes: Routes = [
         path: 'admin',
         loadComponent: () => import('./pages/admin/admin.component').then(m => m.AdminComponent),
         canActivate: [authGuard]
-    }
+    },
+    { path: 'practice', component: PracticeComponent },
 ];

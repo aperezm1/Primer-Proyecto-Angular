@@ -1,0 +1,40 @@
+<div class="practice-page">
+
+  <!-- Directives -->
+  <section class="section">
+    <h2>{{ 'PRACTICE.DIRECTIVES.TITLE' | translate }}</h2>
+
+    <div class="grid">
+      <article class="card">
+        <h3>{{ 'PRACTICE.DIRECTIVES.HOVER_ENLARGE_TITLE' | translate }}</h3>
+        <p appHoverEnlarge>{{ 'PRACTICE.DIRECTIVES.HOVER_ENLARGE_TXT' | translate }}</p>
+      </article>
+
+      <article class="card">
+        <h3>{{ 'PRACTICE.DIRECTIVES.COUNTER_TITLE' | translate }}</h3>
+        <button type="button" appCountClicks>Clicks: 0</button>
+      </article>
+
+      <article class="card">
+        <h3>{{ 'PRACTICE.DIRECTIVES.FOCUS_INPUT_TITLE' | translate }}</h3>
+        <input class="focus-input-wide" appFocusInput type="text" placeholder="{{ 'PRACTICE.DIRECTIVES.FOCUS_INPUT_DESC' | translate }}" />
+      </article>
+
+      <article class="card">
+        <h3>{{ 'PRACTICE.DIRECTIVES.SHOW_IF_ROLE_TITLE' | translate }}</h3>
+        <label for="roleSelect">{{ 'PRACTICE.DIRECTIVES.SHOW_IF_ROLE_LABEL' | translate }}</label>
+
+        <select id="roleSelect" [(ngModel)]="selectedRole">
+          <option value="admin">admin</option>
+          <option value="user">{{ 'PRACTICE.DIRECTIVES.SHOW_IF_ROLE_USER' | translate }}</option>
+        </select>
+        
+        <p [appShowIfRole]="selectedRole">
+          {{ 'PRACTICE.DIRECTIVES.SHOW_IF_ROLE_DESC' | translate }}
+        </p>
+      </article>
+    </div>
+  </section>
+</div>
+
+<app-footer></app-footer>
