@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { API_ENDPOINTS } from '../constants/api-endpoints.constant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbJsonService {
-  private apiUrl = 'http://localhost:3000/users';
-
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
+  private apiUrl = API_ENDPOINTS.usersLocal;
 
   login(email: string, pass: string) {
-    return this.http.get<any[]>(`${this.apiUrl}?email=${email}&pass=${pass}`);
+    return this.http.get<any[]>(this.apiUrl + '?email=' + email + '&pass=' + pass);
   }
 }

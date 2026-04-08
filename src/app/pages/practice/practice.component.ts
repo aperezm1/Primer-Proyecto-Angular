@@ -8,7 +8,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-directives',
+  selector: 'app-practice',
   standalone: true,
   imports: [
     FormsModule,

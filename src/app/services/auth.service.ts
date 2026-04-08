@@ -4,8 +4,26 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
+  private readonly tokenKey = 'token';
+
+  setToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token);
+  }
+
+  getRawToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
   getToken(): string | null {
-    const token = localStorage.getItem('token');
+    const token = this.getRawToken();
     return token ? 'Bearer ' + token : null;
+  }
+
+  isLoggedIn(): boolean {
+    return this.getRawToken() !== null;
+  }
+
+  logout(): void {
+    localStorage.removeItem(this.tokenKey);
   }
 }

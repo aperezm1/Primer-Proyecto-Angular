@@ -1,7 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { LanguageService } from '../../services/language.service';
+import { APP_ROUTES } from '../../constants/app-routes.constant';
 
 @Component({
   selector: 'app-navbar',
@@ -11,27 +14,28 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  private translate = inject(TranslateService);
   private router = inject(Router);
-
-  currentLang = localStorage.getItem('lang') || 'es';
+  private authService = inject(AuthService);
+  private languageService = inject(LanguageService);
+  
+  routes = APP_ROUTES;
+  currentLang = this.languageService.getCurrentLang();
 
   changeLang(lang: string): void {
     this.currentLang = lang;
-    this.translate.use(lang);
-    localStorage.setItem('lang', lang);
+    this.languageService.setLang(lang);
   }
 
   goToLogin(): void {
-    this.router.navigate(['/login']);
+    this.router.navigate([this.routes.login]);
   }
 
   logout(): void {
-    localStorage.removeItem('token');
-    this.router.navigate(['/']);
+    this.authService.logout();
+    this.router.navigate([this.routes.home]);
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('token') !== null;
+    return this.authService.isLoggedIn();
   }
 }
