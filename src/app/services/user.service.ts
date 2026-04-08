@@ -8,8 +8,9 @@ import { API_ENDPOINTS } from '../constants/api-endpoints.constant';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = API_ENDPOINTS.usersPublic;
   private http = inject(HttpClient);
+  
+  private apiUrl = API_ENDPOINTS.usersPublic;
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl);

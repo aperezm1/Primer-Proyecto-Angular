@@ -5,9 +5,10 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root'
 })
 export class LanguageService {
+  private translate = inject(TranslateService);
+  
   private readonly langKey = 'lang';
   private readonly defaultLang = 'es';
-  private translate = inject(TranslateService);
 
   initLang(): string {
     const lang = this.getCurrentLang();
