@@ -16,10 +16,6 @@ export class NavbarComponent {
 
   currentLang = localStorage.getItem('lang') || 'es';
 
-  get isLoggedIn(): boolean {
-    return localStorage.getItem('token') !== null;
-  }
-
   changeLang(lang: string): void {
     this.currentLang = lang;
     this.translate.use(lang);
@@ -33,5 +29,9 @@ export class NavbarComponent {
   logout(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/']);
+  }
+
+  isLoggedIn(): boolean {
+    return localStorage.getItem('token') !== null;
   }
 }

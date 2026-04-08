@@ -1,7 +1,8 @@
 <nav>
   <div class="lang-select">
-    <img [src]="'assets/flags/' + currentLang + '.svg'" [alt]="currentLang" width="24" height="16" class="flag-img" />
-    <select [(ngModel)]="currentLang" (change)="changeLang(currentLang)" aria-label="Language selector">
+    <img [src]="'assets/flags/' + currentLang + '.svg'" [alt]="currentLang" class="flag-img" />
+    
+    <select [(ngModel)]="currentLang" (change)="changeLang(currentLang)">
       <option value="es">ES</option>
       <option value="en">EN</option>
     </select>
@@ -19,14 +20,14 @@
     <a routerLink="contact" routerLinkActive="activo">
       {{ 'NAV.CONTACT' | translate }}
     </a>
-    @if (isLoggedIn) {
+    @if (isLoggedIn()) {
       |
       <a routerLink="admin" routerLinkActive="activo">Admin</a>
     }
   </div>
 
   <div class="nav-actions">
-    @if (isLoggedIn) {
+    @if (isLoggedIn()) {
       <button type="button" class="session-btn" (click)="logout()">Cerrar sesión</button>
     } @else {
       <button type="button" class="session-btn" (click)="goToLogin()">Iniciar sesión</button>

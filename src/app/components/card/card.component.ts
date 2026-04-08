@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
   @Input() imgSrc: string = '';
-  @Input() titulo: string = '';
-  @Input() texto: string = '';
+  @Input() title: string = '';
+  @Input() desc: string = '';
   @Input() link: string = '';
 }
