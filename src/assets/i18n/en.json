@@ -79,6 +79,29 @@
       "SHOW_IF_ROLE_LABEL": "Required role:",
       "SHOW_IF_ROLE_USER": "user",
       "SHOW_IF_ROLE_DESC": "This text only shows when the value is admin"
+    },
+    "PIPES": {
+      "NAME_TITLE": "Format a name",
+      "NAME_ORIGINAL": "Original",
+      "NAME_UPPER": "Uppercase",
+      "NAME_LOWER": "Lowercase",
+      "NAME_TITLECASE": "Titlecase",
+      "DATE_TITLE": "Show date and time",
+      "DATE_SHORT": "Short date",
+      "DATE_LONG": "Long date",
+      "DATE_TIME": "Time",
+      "DATE_FULL": "Full",
+      "CURRENCY_TITLE": "Show price with currency",
+      "CURRENCY_USD": "Price (USD)",
+      "CURRENCY_EUR": "Price (EUR)",
+      "PROGRESS_TITLE": "Show progress",
+      "PROGRESS": "Progress",
+      "PROGRESS_DECIMALS": "Progress (2 decimals)",
+      "SLICE_TITLE": "Show only part of the text",
+      "SLICE_FULL": "Full text",
+      "SLICE_1": "Slice (0, 10)",
+      "SLICE_2": "Slice (11, 23)",
+      "JSON_TITLE": "Show an object on screen"
     }
   },
   "FOOTER": {
