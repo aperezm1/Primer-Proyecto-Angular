@@ -68,7 +68,7 @@
     "TEXT": "Bienvenido al panel de administración. Aquí puedes gestionar tu aplicación."
   },
   "PRACTICE": {
-    "DIRECTIVES" : {
+    "DIRECTIVES": {
       "TITLE": "Directivas",
       "HOVER_ENLARGE_TITLE": "Agrandar al pasar el mouse",
       "HOVER_ENLARGE_TXT": "Pasa el mouse sobre este texto",
@@ -79,6 +79,38 @@
       "SHOW_IF_ROLE_LABEL": "Rol requerido:",
       "SHOW_IF_ROLE_USER": "usuario",
       "SHOW_IF_ROLE_DESC": "Este texto solo se muestra cuando el valor es admin"
+    },
+    "PIPES": {
+      "NAME_TITLE": "Formatear un nombre",
+      "NAME_ORIGINAL": "Original",
+      "NAME_UPPER": "Mayúsculas",
+      "NAME_LOWER": "Minúsculas",
+      "NAME_TITLECASE": "Capitalización",
+      "DATE_TITLE": "Mostrar fecha y hora",
+      "DATE_SHORT": "Fecha corta",
+      "DATE_LONG": "Fecha larga",
+      "DATE_TIME": "Hora",
+      "DATE_FULL": "Completo",
+      "CURRENCY_TITLE": "Mostrar precio con moneda",
+      "CURRENCY_USD": "Precio (USD)",
+      "CURRENCY_EUR": "Precio (EUR)",
+      "PROGRESS_TITLE": "Mostrar progreso",
+      "PROGRESS": "Progreso",
+      "PROGRESS_DECIMALS": "Progreso (2 decimales)",
+      "SLICE_TITLE": "Mostrar solo parte del texto",
+      "SLICE_FULL": "Texto completo",
+      "SLICE_1": "Slice (0, 10)",
+      "SLICE_2": "Slice (11, 23)",
+      "JSON_TITLE": "Mostrar un objeto en pantalla",
+      "EXAMPLE_TEXT": "Angular es un framework de desarrollo web muy potente."
+    },
+    "PIPES_CUSTOM": {
+      "TITLE": "Pipes personalizados",
+      "GREET_TITLE": "Pipe de saludo",
+      "GREET_TEXT": "¡Hola, {{ name }}!",
+      "DOUBLE_TITLE": "Pipe de doble número",
+      "BOLD_TITLE": "Pipe de texto en negrita",
+      "AGE_TITLE": "Pipe de edad"
     }
   },
   "FOOTER": {
