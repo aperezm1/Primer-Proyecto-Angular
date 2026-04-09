@@ -1,8 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/user';
+import { TranslatePipe } from '@ngx-translate/core';
+import { finalize } from 'rxjs/operators';
+import { UserService } from '../../core/services/user.service';
+import { User } from '../../core/models/user';
+import { APP_ROUTES } from '../../core/constants/app-routes.constant';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,32 +14,33 @@ import { User } from '../../models/user';
   styleUrl: './user-detail.component.scss'
 })
 export class UserDetailComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private userService = inject(UserService);
+  
   user: User | null = null;
   loading = true;
   errorKey: string | null = null;
-
-  private route = inject(ActivatedRoute);
-  private userService = inject(UserService);
-  private translate = inject(TranslateService);
+  routes = APP_ROUTES;
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     if (!id || Number.isNaN(id)) {
-      this.loading = false;
       this.errorKey = 'USER_DETAIL.INVALID_ID';
+      this.loading = false;
       return;
     }
 
-    this.userService.getUserById(id).subscribe({
-      next: (data) => {
-        this.user = data;
-        this.loading = false;
-      },
-      error: () => {
-        this.errorKey = 'USER_DETAIL.LOAD_ERROR';
-        this.loading = false;
-      }
-    });
+    this.userService
+      .getUserById(id)
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe({
+        next: data => {
+          this.user = data;
+        },
+        error: () => {
+          this.errorKey = 'USER_DETAIL.LOAD_ERROR';
+        }
+      });
   }
 }

@@ -6,7 +6,6 @@
 
     @if (!loading && errorKey) {
       <p class="status error">{{ errorKey | translate }}</p>
-      <a class="back-link" [routerLink]="['/about']">{{ 'USER_DETAIL.BACK_LINK' | translate }}</a>
     }
 
     @if (!loading && user) {
@@ -39,8 +38,10 @@
           <p><span>{{ 'USER_DETAIL.COMPANY_BS_LABEL' | translate }}:</span> {{ user.company.bs }}</p>
         </section>
       </div>
+    }
 
-      <a class="back-link" [routerLink]="['/about']">{{ 'USER_DETAIL.BACK_LINK' | translate }}</a>
+    @if (!loading) {
+      <a class="back-link" [routerLink]="[routes.about]">{{ 'USER_DETAIL.BACK_LINK' | translate }}</a>
     }
   </div>
 </div>

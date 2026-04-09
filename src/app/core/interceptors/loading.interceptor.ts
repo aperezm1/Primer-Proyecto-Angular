@@ -1,4 +1,3 @@
-// src/app/interceptors/loading.interceptor.ts
 import { HttpInterceptorFn } from '@angular/common/http';
 import { delay, finalize } from 'rxjs/operators';
 import { inject } from '@angular/core';

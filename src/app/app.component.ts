@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { TranslateService } from '@ngx-translate/core';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { LoadingService } from './services/loading.service';
+import { LoadingService } from './core/services/loading.service';
 import { AsyncPipe } from '@angular/common';
+import { LanguageService } from './core/services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +14,10 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  title = 'primer-proyecto';
-  
-  private translate = inject(TranslateService);
+  private languageService = inject(LanguageService);
   loadingService = inject(LoadingService);
 
   ngOnInit(): void {
-    const savedLang = localStorage.getItem('lang') || 'es';
-    this.translate.use(savedLang);
+    this.languageService.initLang();
   }
 }

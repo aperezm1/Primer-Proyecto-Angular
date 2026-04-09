@@ -1,7 +1,7 @@
 <nav>
   <div class="lang-select">
     <img [src]="'assets/flags/' + currentLang + '.svg'" [alt]="currentLang" class="flag-img" />
-    
+
     <select [(ngModel)]="currentLang" (change)="changeLang(currentLang)">
       <option value="es">ES</option>
       <option value="en">EN</option>
@@ -9,24 +9,24 @@
   </div>
 
   <div class="nav-links">
-    <a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">
+    <a [routerLink]="routes.home" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">
       {{ 'NAV.HOME' | translate }}
     </a>
     |
-    <a routerLink="about" routerLinkActive="activo">
+    <a [routerLink]="routes.about" routerLinkActive="activo">
       {{ 'NAV.ABOUT' | translate }}
     </a>
     |
-    <a routerLink="contact" routerLinkActive="activo">
+    <a [routerLink]="routes.contact" routerLinkActive="activo">
       {{ 'NAV.CONTACT' | translate }}
     </a>
     |
-    <a routerLink="practice" routerLinkActive="activo">
+    <a [routerLink]="routes.practice" routerLinkActive="activo">
       {{ 'NAV.PRACTICE' | translate }}
     </a>
     @if (isLoggedIn()) {
       |
-      <a routerLink="admin" routerLinkActive="activo">Admin</a>
+      <a [routerLink]="routes.admin" routerLinkActive="activo">Admin</a>
     }
   </div>
 

@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { DbJsonService } from '../../services/db-json.service';
+import { DbJsonService } from '../../core/services/db-json.service';
 import { TranslatePipe } from '@ngx-translate/core';
+import { AuthService } from '../../core/services/auth.service';
+import { APP_ROUTES } from '../../core/constants/app-routes.constant';
 
 @Component({
   selector: 'app-login',
@@ -12,19 +14,21 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  private router = inject(Router);
+  private dbJsonService = inject(DbJsonService);
+  private authService = inject(AuthService);
+  
   username = '';
   password = '';
   error = '';
-  private router = inject(Router);
-  private dbJsonService = inject(DbJsonService);
 
   login(): void {
     if (this.username.trim() && this.password.trim()) {
       this.dbJsonService.login(this.username, this.password).subscribe({
         next: users => {
           if (users.length > 0) {
-            localStorage.setItem('token', this.username);
-            this.router.navigate(['/admin']);
+            this.authService.setToken(this.username);
+            this.router.navigate([APP_ROUTES.admin]);
           } else {
             this.error = 'LOGIN.ERROR_INVALID';
           }
@@ -33,7 +37,7 @@ export class LoginComponent {
           this.error = 'LOGIN.ERROR_CONNECTION';
         }
       });
-      
+
       return;
     }
 
