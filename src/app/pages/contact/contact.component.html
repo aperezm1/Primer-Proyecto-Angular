@@ -1,36 +1,40 @@
 <div class="main-content">
-  <div class="form-container">
-    <h1>{{ 'CONTACT.TITLE' | translate }}</h1>
+  @if (!sent) {
+    <div class="form-container">
+      <h1>{{ 'CONTACT.TITLE' | translate }}</h1>
 
-    <form [formGroup]="form" (ngSubmit)="send()" novalidate>
-      <label for="name">{{ 'CONTACT.NAME_LABEL' | translate }}</label>
-      <input id="name" type="text" formControlName="name" />
+      <form [formGroup]="form" (ngSubmit)="send()" novalidate>
+        <label for="name">{{ 'CONTACT.NAME_LABEL' | translate }}</label>
+        <input id="name" type="text" formControlName="name" />
 
-      @if (form.controls.name.touched && form.controls.name.invalid) {
-        <p>{{ 'CONTACT.NAME_ERROR' | translate }}</p>
-      }
+        @if (form.controls.name.touched && form.controls.name.invalid) {
+          <p>{{ 'CONTACT.NAME_ERROR' | translate }}</p>
+        }
 
-      <label for="email">{{ 'CONTACT.EMAIL_LABEL' | translate }}</label>
-      <input id="email" type="email" formControlName="email" />
+        <label for="email">{{ 'CONTACT.EMAIL_LABEL' | translate }}</label>
+        <input id="email" type="email" formControlName="email" />
 
-      @if (form.controls.email.touched && form.controls.email.invalid) {
-        <p>{{ 'CONTACT.EMAIL_ERROR' | translate }}</p>
-      }
+        @if (form.controls.email.touched && form.controls.email.invalid) {
+          <p>{{ 'CONTACT.EMAIL_ERROR' | translate }}</p>
+        }
 
-      <label for="comment">{{ 'CONTACT.MESSAGE_LABEL' | translate }}</label>
-      <textarea id="comment" rows="5" formControlName="comment"></textarea>
+        <label for="comment">{{ 'CONTACT.MESSAGE_LABEL' | translate }}</label>
+        <textarea id="comment" rows="5" formControlName="comment"></textarea>
 
-      @if (form.controls.comment.touched && form.controls.comment.invalid) {
-        <p>{{ 'CONTACT.MESSAGE_ERROR' | translate }}</p>
-      }
+        @if (form.controls.comment.touched && form.controls.comment.invalid) {
+          <p>{{ 'CONTACT.MESSAGE_ERROR' | translate }}</p>
+        }
 
-      <button type="submit">{{ 'CONTACT.SUBMIT_BTN' | translate }}</button>
-    </form>
-
-    @if (sent) {
-      <p class="ok-msg">{{ 'CONTACT.SUCCESS_MSG' | translate }}</p>
-    }
-  </div>
+        <button type="submit">{{ 'CONTACT.SUBMIT_BTN' | translate }}</button>
+      </form>
+    </div>
+  }
 </div>
+
+@if (sent) {
+  <div class="ok-msg-centered">
+    {{ 'CONTACT.SUCCESS_MSG' | translate }}
+  </div>
+}
 
 <app-footer></app-footer>
