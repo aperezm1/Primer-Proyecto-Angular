@@ -65,7 +65,8 @@
   },
   "ADMIN": {
     "TITLE": "Panel de administración",
-    "TEXT": "Bienvenido al panel de administración. Aquí puedes gestionar tu aplicación."
+    "TEXT": "Bienvenido al panel de administración. Aquí puedes gestionar tu aplicación.",
+    "BTN": "Ver estadísticas"
   },
   "PRACTICE": {
     "DIRECTIVES": {

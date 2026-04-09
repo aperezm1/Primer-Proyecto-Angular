@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-contact',
@@ -27,8 +28,16 @@ export class ContactComponent {
       return;
     }
 
-    this.sent = true;
+    gsap.to('.form-container', {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      onComplete: () => {
+        this.sent = true;
+        this.form.reset();
+      }
+    });
+
     console.log('Datos del formulario:', this.form.value);
-    this.form.reset();
   }
 }
