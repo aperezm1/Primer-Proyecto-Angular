@@ -40,45 +40,73 @@
   <!-- Pipes -->
   <section class="section">
     <h2>Pipes</h2>
+    
     <div class="grid">
       <article class="card">
         <h3>{{ 'PRACTICE.PIPES.NAME_TITLE' | translate }}</h3>
-        <p><strong>{{ 'PRACTICE.PIPES.NAME_ORIGINAL' | translate }}:</strong> {{ nombre }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.NAME_UPPER' | translate }}:</strong> {{ nombre | uppercase }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.NAME_LOWER' | translate }}:</strong> {{ nombre | lowercase }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.NAME_TITLECASE' | translate }}:</strong> {{ nombre | titlecase }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.NAME_ORIGINAL' | translate }}:</strong> {{ name }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.NAME_UPPER' | translate }}:</strong> {{ name | uppercase }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.NAME_LOWER' | translate }}:</strong> {{ name | lowercase }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.NAME_TITLECASE' | translate }}:</strong> {{ name | titlecase }}</p>
       </article>
 
       <article class="card">
         <h3>{{ 'PRACTICE.PIPES.DATE_TITLE' | translate }}</h3>
-        <p><strong>{{ 'PRACTICE.PIPES.DATE_SHORT' | translate }}:</strong> {{ fechaActual | date:'shortDate' }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.DATE_LONG' | translate }}:</strong> {{ fechaActual | date:'fullDate' }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.DATE_TIME' | translate }}:</strong> {{ fechaActual | date:'shortTime' }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.DATE_FULL' | translate }}:</strong> {{ fechaActual | date:'full' }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.DATE_SHORT' | translate }}:</strong> {{ currentDate | date:'shortDate' }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.DATE_LONG' | translate }}:</strong> {{ currentDate | date:'fullDate' }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.DATE_TIME' | translate }}:</strong> {{ currentDate | date:'shortTime' }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.DATE_FULL' | translate }}:</strong> {{ currentDate | date:'full' }}</p>
       </article>
 
       <article class="card">
         <h3>{{ 'PRACTICE.PIPES.CURRENCY_TITLE' | translate }}</h3>
-        <p><strong>{{ 'PRACTICE.PIPES.CURRENCY_USD' | translate }}:</strong> {{ precio | currency:'USD' }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.CURRENCY_EUR' | translate }}:</strong> {{ precio | currency:'EUR' }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.CURRENCY_USD' | translate }}:</strong> {{ price | currency:'USD' }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.CURRENCY_EUR' | translate }}:</strong> {{ price | currency:'EUR' }}</p>
       </article>
 
       <article class="card">
         <h3>{{ 'PRACTICE.PIPES.PROGRESS_TITLE' | translate }}</h3>
-        <p><strong>{{ 'PRACTICE.PIPES.PROGRESS' | translate }}:</strong> {{ progreso | percent }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.PROGRESS_DECIMALS' | translate }}:</strong> {{ progreso | percent:'1.2-2' }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.PROGRESS' | translate }}:</strong> {{ progress | percent }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.PROGRESS_DECIMALS' | translate }}:</strong> {{ progress | percent:'1.2-2' }}</p>
       </article>
 
       <article class="card">
         <h3>{{ 'PRACTICE.PIPES.SLICE_TITLE' | translate }}</h3>
-        <p><strong>{{ 'PRACTICE.PIPES.SLICE_FULL' | translate }}:</strong> {{ texto }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.SLICE_1' | translate }}:</strong> {{ texto | slice:0:10 }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.SLICE_2' | translate }}:</strong> {{ texto | slice:11:23 }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.SLICE_FULL' | translate }}:</strong> {{ 'PRACTICE.PIPES.EXAMPLE_TEXT' | translate }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.SLICE_1' | translate }}:</strong> {{ 'PRACTICE.PIPES.EXAMPLE_TEXT' | translate | slice:0:10 }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.SLICE_2' | translate }}:</strong> {{ 'PRACTICE.PIPES.EXAMPLE_TEXT' | translate | slice:11:23 }}</p>
       </article>
 
       <article class="card">
         <h3>{{ 'PRACTICE.PIPES.JSON_TITLE' | translate }}</h3>
-        <pre>{{ objeto | json }}</pre>
+        <pre>{{ object | json }}</pre>
+      </article>
+    </div>
+  </section>
+
+  <!-- Custom Pipes -->
+  <section class="section">
+    <h2>{{ 'PRACTICE.PIPES_CUSTOM.TITLE' | translate }}</h2>
+
+    <div class="grid">
+      <article class="card">
+        <h3>{{ 'PRACTICE.PIPES_CUSTOM.GREET_TITLE' | translate }}</h3>
+        <p>{{ name | titlecase | greet | async }}</p>
+      </article>
+
+      <article class="card">
+        <h3>{{ 'PRACTICE.PIPES_CUSTOM.DOUBLE_TITLE' | translate }}: {{ number }}</h3>
+        <p>{{ number | double }}</p>
+      </article>
+
+      <article class="card">
+        <h3>{{ 'PRACTICE.PIPES_CUSTOM.BOLD_TITLE' | translate }}</h3>
+        <p [innerHTML]="'PRACTICE.PIPES.EXAMPLE_TEXT' | translate | bold"></p>
+      </article>
+
+      <article class="card">
+        <h3>{{ 'PRACTICE.PIPES_CUSTOM.AGE_TITLE' | translate }}: {{ birthDate | date:'yyyy-MM-dd' }}</h3>
+        <p>{{ birthDate | age }}</p>
       </article>
     </div>
   </section>

@@ -6,7 +6,11 @@ import { FocusInputDirective } from '../../core/directives/focus-input.directive
 import { ShowIfRoleDirective } from '../../core/directives/show-if-role.directive';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { TranslatePipe } from '@ngx-translate/core';
-import { CurrencyPipe, DatePipe, JsonPipe, LowerCasePipe, PercentPipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, DatePipe, JsonPipe, LowerCasePipe, PercentPipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { GreetPipe } from '../../core/pipes/greet.pipe';
+import { DoublePipe } from '../../core/pipes/double.pipe';
+import { BoldPipe } from '../../core/pipes/bold.pipe';
+import { AgePipe } from '../../core/pipes/age.pipe';
 
 @Component({
   selector: 'app-practice',
@@ -18,6 +22,7 @@ import { CurrencyPipe, DatePipe, JsonPipe, LowerCasePipe, PercentPipe, SlicePipe
     FocusInputDirective,
     ShowIfRoleDirective,
     FooterComponent,
+    AsyncPipe,
     TranslatePipe,
     UpperCasePipe,
     LowerCasePipe,
@@ -26,7 +31,11 @@ import { CurrencyPipe, DatePipe, JsonPipe, LowerCasePipe, PercentPipe, SlicePipe
     CurrencyPipe,
     PercentPipe,
     SlicePipe,
-    JsonPipe
+    JsonPipe,
+    GreetPipe,
+    DoublePipe,
+    BoldPipe,
+    AgePipe
   ],
   templateUrl: './practice.component.html',
   styleUrl: './practice.component.scss'
@@ -36,15 +45,16 @@ export class PracticeComponent {
   selectedRole = 'admin';
 
   // Pipes data
-  nombre = 'adrián pérez';
-  fechaActual = new Date();
-  precio = 1234.56;
-  progreso = 0.42;
-  texto = 'Angular es un framework de desarrollo web muy potente.';
-  objeto = {
-    nombre: 'Adrián',
-    edad: 25,
-    activo: true,
+  name = 'adrián pérez';
+  currentDate = new Date();
+  price = 1234.56;
+  progress = 0.42;
+  object = {
+    name: 'Adrián',
+    age: 25,
+    active: true,
     roles: ['admin', 'user']
   };
+  number = 5;
+  birthDate = new Date(2000, 6, 3);
 }

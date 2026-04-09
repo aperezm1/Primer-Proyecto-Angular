@@ -101,7 +101,16 @@
       "SLICE_FULL": "Full text",
       "SLICE_1": "Slice (0, 10)",
       "SLICE_2": "Slice (11, 23)",
-      "JSON_TITLE": "Show an object on screen"
+      "JSON_TITLE": "Show an object on screen",
+      "EXAMPLE_TEXT": "Angular is a very powerful web development framework."
+    },
+    "PIPES_CUSTOM": {
+      "TITLE": "Custom Pipes",
+      "GREET_TITLE": "Greeting Pipe",
+      "GREET_TEXT": "Hello, {{ name }}!",
+      "DOUBLE_TITLE": "Double number Pipe",
+      "BOLD_TITLE": "Bold text Pipe",
+      "AGE_TITLE": "Age Pipe"
     }
   },
   "FOOTER": {
