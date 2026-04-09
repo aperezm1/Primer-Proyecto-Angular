@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { DbJsonService } from '../../services/db-json.service';
+import { DbJsonService } from '../../core/services/db-json.service';
 import { TranslatePipe } from '@ngx-translate/core';
-import { AuthService } from '../../services/auth.service';
-import { APP_ROUTES } from '../../constants/app-routes.constant';
+import { AuthService } from '../../core/services/auth.service';
+import { APP_ROUTES } from '../../core/constants/app-routes.constant';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +14,13 @@ import { APP_ROUTES } from '../../constants/app-routes.constant';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  username = '';
-  password = '';
-  error = '';
-  
   private router = inject(Router);
   private dbJsonService = inject(DbJsonService);
   private authService = inject(AuthService);
+  
+  username = '';
+  password = '';
+  error = '';
 
   login(): void {
     if (this.username.trim() && this.password.trim()) {

@@ -2,9 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { LoadingService } from './services/loading.service';
+import { LoadingService } from './core/services/loading.service';
 import { AsyncPipe } from '@angular/common';
-import { LanguageService } from './services/language.service';
+import { LanguageService } from './core/services/language.service';
 
 @Component({
   selector: 'app-root',

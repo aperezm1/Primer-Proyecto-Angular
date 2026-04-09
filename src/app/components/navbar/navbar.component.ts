@@ -2,9 +2,9 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { LanguageService } from '../../services/language.service';
-import { APP_ROUTES } from '../../constants/app-routes.constant';
+import { AuthService } from '../../core/services/auth.service';
+import { LanguageService } from '../../core/services/language.service';
+import { APP_ROUTES } from '../../core/constants/app-routes.constant';
 
 @Component({
   selector: 'app-navbar',

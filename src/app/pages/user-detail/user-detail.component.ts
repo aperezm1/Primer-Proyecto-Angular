@@ -2,9 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { finalize } from 'rxjs/operators';
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/user';
-import { APP_ROUTES } from '../../constants/app-routes.constant';
+import { UserService } from '../../core/services/user.service';
+import { User } from '../../core/models/user';
+import { APP_ROUTES } from '../../core/constants/app-routes.constant';
 
 @Component({
   selector: 'app-user-detail',

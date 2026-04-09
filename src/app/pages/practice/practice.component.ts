@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HoverEnlargeDirective } from '../../directives/hover-enlarge.directive';
-import { CountClicksDirective } from '../../directives/count-clicks.directive';
-import { FocusInputDirective } from '../../directives/focus-input.directive';
-import { ShowIfRoleDirective } from '../../directives/show-if-role.directive';
+import { HoverEnlargeDirective } from '../../core/directives/hover-enlarge.directive';
+import { CountClicksDirective } from '../../core/directives/count-clicks.directive';
+import { FocusInputDirective } from '../../core/directives/focus-input.directive';
+import { ShowIfRoleDirective } from '../../core/directives/show-if-role.directive';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { TranslatePipe } from '@ngx-translate/core';
 

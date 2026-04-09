@@ -2,9 +2,9 @@ import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { TranslatePipe } from '@ngx-translate/core';
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/user';
-import { APP_ROUTES } from '../../constants/app-routes.constant';
+import { UserService } from '../../core/services/user.service';
+import { User } from '../../core/models/user';
+import { APP_ROUTES } from '../../core/constants/app-routes.constant';
 
 @Component({
   selector: 'app-about',

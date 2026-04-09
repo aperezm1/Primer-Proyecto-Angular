@@ -4,10 +4,10 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
-import { tokenInterceptor } from './interceptors/token.interceptor';
-import { logInterceptor } from './interceptors/log.interceptor';
-import { errorInterceptor } from './interceptors/error.interceptor';
-import { loadingInterceptor } from './interceptors/loading.interceptor';
+import { tokenInterceptor } from './core/interceptors/token.interceptor';
+import { logInterceptor } from './core/interceptors/log.interceptor';
+import { errorInterceptor } from './core/interceptors/error.interceptor';
+import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

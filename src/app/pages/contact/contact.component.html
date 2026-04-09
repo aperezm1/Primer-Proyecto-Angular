@@ -2,11 +2,11 @@
   <div class="form-container">
     <h1>{{ 'CONTACT.TITLE' | translate }}</h1>
 
-    <form [formGroup]="form" (ngSubmit)="enviar()" novalidate>
-      <label for="nombre">{{ 'CONTACT.NAME_LABEL' | translate }}</label>
-      <input id="nombre" type="text" formControlName="nombre" />
+    <form [formGroup]="form" (ngSubmit)="send()" novalidate>
+      <label for="name">{{ 'CONTACT.NAME_LABEL' | translate }}</label>
+      <input id="name" type="text" formControlName="name" />
 
-      @if (form.controls.nombre.touched && form.controls.nombre.invalid) {
+      @if (form.controls.name.touched && form.controls.name.invalid) {
         <p>{{ 'CONTACT.NAME_ERROR' | translate }}</p>
       }
 
@@ -17,17 +17,17 @@
         <p>{{ 'CONTACT.EMAIL_ERROR' | translate }}</p>
       }
 
-      <label for="mensaje">{{ 'CONTACT.MESSAGE_LABEL' | translate }}</label>
-      <textarea id="mensaje" rows="5" formControlName="mensaje"></textarea>
+      <label for="comment">{{ 'CONTACT.MESSAGE_LABEL' | translate }}</label>
+      <textarea id="comment" rows="5" formControlName="comment"></textarea>
 
-      @if (form.controls.mensaje.touched && form.controls.mensaje.invalid) {
+      @if (form.controls.comment.touched && form.controls.comment.invalid) {
         <p>{{ 'CONTACT.MESSAGE_ERROR' | translate }}</p>
       }
 
       <button type="submit">{{ 'CONTACT.SUBMIT_BTN' | translate }}</button>
     </form>
 
-    @if (enviado) {
+    @if (sent) {
       <p class="ok-msg">{{ 'CONTACT.SUCCESS_MSG' | translate }}</p>
     }
   </div>
