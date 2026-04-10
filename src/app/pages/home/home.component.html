@@ -1,5 +1,5 @@
 <div class="main-content">
-  <p class="welcome-message">{{ 'HOME.WELCOME' | translate: { autor: autor } }}</p>
+  <p class="welcome-message">{{ 'HOME.WELCOME' | translate: { author: author } }}</p>
 
   <div class="cards-container">
     <app-card
@@ -29,33 +29,33 @@
   type="button"
   class="chat-fab"
   (click)="toggleChat()"
-  aria-label="Abrir chat bot">
+  [attr.aria-label]="'HOME.CHAT.OPEN' | translate">
   🤖
 </button>
 
-@if (chatOpen) {
+@if (isChatOpen) {
   <div class="chat-modal-overlay" (click)="onOverlayClick($event)">
-    <section class="chat-modal" role="dialog" aria-modal="true" aria-label="Chatbot">
+    <section class="chat-modal" role="dialog" aria-modal="true" [attr.aria-label]="'HOME.CHAT.TITLE' | translate">
       <header class="chat-modal-header">
-        <h2>Chatbot WS</h2>
+        <h2>{{ 'HOME.CHAT.TITLE' | translate }}</h2>
         <button type="button" class="chat-close" (click)="closeChat()">×</button>
       </header>
 
-      <p class="chat-status">Estado: {{ wsState }}</p>
+      <p class="chat-status">{{ 'HOME.CHAT.STATUS' | translate }}: {{ wsState }}</p>
 
       <div class="chatbot-controls">
         <input
           type="text"
           [(ngModel)]="chatInput"
-          placeholder="Escribe un mensaje..."
+          [placeholder]="'HOME.CHAT.PLACEHOLDER' | translate"
           (keyup.enter)="sendMessage()" />
-        <button type="button" (click)="sendMessage()">Enviar</button>
-        <button type="button" (click)="sendPing()">Ping</button>
+        <button type="button" (click)="sendMessage()">{{ 'HOME.CHAT.SEND' | translate }}</button>
+        <button type="button" (click)="sendPing()">{{ 'HOME.CHAT.PING' | translate }}</button>
       </div>
 
       <div class="chatbot-grid">
         <article class="chat-panel">
-          <h3>Chat</h3>
+          <h3>{{ 'HOME.CHAT.CHAT_LIST' | translate }}</h3>
           <ul>
             @for (msg of chatMessages; track $index) {
               <li>
@@ -68,7 +68,7 @@
         </article>
 
         <article class="chat-panel">
-          <h3>Notificaciones</h3>
+          <h3>{{ 'HOME.CHAT.NOTIFICATIONS' | translate }}</h3>
           <ul>
             @for (msg of notifications; track $index) {
               <li>

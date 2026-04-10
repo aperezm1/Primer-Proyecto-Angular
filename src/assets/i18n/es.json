@@ -8,10 +8,20 @@
     "LOGOUT": "Cerrar sesión"
   },
   "HOME": {
-    "WELCOME": "¡Bienvenido/a a la página de {{ autor }}!",
+    "WELCOME": "¡Bienvenido/a a la página de {{ author }}!",
     "CARD_ANGULAR_DESC": "Framework para aplicaciones web modernas.",
     "CARD_SPRINGBOOT_DESC": "Framework para crear APIs y servicios backend en Java.",
-    "CARD_DOCKER_DESC": "Plataforma para contenerización y despliegue de aplicaciones."
+    "CARD_DOCKER_DESC": "Plataforma para contenerización y despliegue de aplicaciones.",
+    "CHAT": {
+      "OPEN": "Abrir chat",
+      "TITLE": "Chatbot WS",
+      "STATUS": "Estado",
+      "PLACEHOLDER": "Escribe un mensaje...",
+      "SEND": "Enviar",
+      "PING": "Ping",
+      "CHAT_LIST": "Chat",
+      "NOTIFICATIONS": "Notificaciones"
+    }
   },
   "ABOUT": {
     "USERS_TITLE": "Usuarios",

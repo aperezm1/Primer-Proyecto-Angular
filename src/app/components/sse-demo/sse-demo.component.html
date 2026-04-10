@@ -1,9 +1,9 @@
-<div class="sse-status">{{ 'SSE.STATUS_LABEL' | translate }}: {{ estado | translate }}</div>
+<div class="sse-status">{{ 'SSE.STATUS_LABEL' | translate }}: {{ statusKey | translate }}</div>
 
 <ul>
-  @for (msg of mensajes; track $index) {
+  @for (msg of messages; track $index) {
     <li>
-      <strong>{{ msg.timestamp }}</strong> - {{ msg.messageKey | translate:{ value: msg.value } }}
+      <strong>{{ formatTimestamp(msg.timestamp) }}</strong> - {{ msg.messageKey | translate:{ value: msg.value } }}
     </li>
   }
 </ul>

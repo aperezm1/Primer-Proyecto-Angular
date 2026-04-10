@@ -22,24 +22,17 @@ function createMessage(type, payload, from = 'system') {
 function getBotReply(text) {
   const normalized = text.trim().toLowerCase();
 
-  if (normalized.includes('hola')) return 'Hola, soy tu bot de prueba.';
-  if (normalized.includes('angular')) return 'Angular 19 + RxJS + WebSocket funciona muy bien.';
-  if (normalized.includes('gracias')) return 'De nada. ¿Quieres que te ayude con otro ejercicio?';
-  if (normalized.includes('adios') || normalized.includes('adiós')) return 'Hasta luego.';
-  if (normalized.includes('plexus')) return 'Plexus Tech es una maravilla y os va a contratar a todos.';
-  return 'Mensaje recibido. Esta es una respuesta predeterminada.';
+  if (normalized.includes('hello') || normalized.includes('hi')) return 'Hello, I am your demo bot.';
+  if (normalized.includes('angular')) return 'Angular 19 + RxJS + WebSocket works great.';
+  if (normalized.includes('thanks')) return 'You are welcome. Need help with another exercise?';
+  if (normalized.includes('bye')) return 'See you later.';
+  if (normalized.includes('plexus')) return 'Plexus Tech sounds awesome.';
+  return 'Message received. This is a predefined response.';
 }
 
 wss.on('connection', (ws) => {
-  sendJson(
-    ws,
-    createMessage('status', { text: 'Conexion WebSocket abierta' })
-  );
-
-  sendJson(
-    ws,
-    createMessage('notification', { text: 'Chatbot listo para responder' })
-  );
+  sendJson(ws, createMessage('status', { text: 'WebSocket connection opened' }));
+  sendJson(ws, createMessage('notification', { text: 'Chatbot is ready' }));
 
   ws.on('message', (raw) => {
     let incoming;
@@ -47,18 +40,12 @@ wss.on('connection', (ws) => {
     try {
       incoming = JSON.parse(raw.toString());
     } catch (error) {
-      sendJson(
-        ws,
-        createMessage('notification', { text: 'Mensaje invalido: JSON incorrecto' })
-      );
+      sendJson(ws, createMessage('notification', { text: 'Invalid message: malformed JSON' }));
       return;
     }
 
     if (!incoming?.type) {
-      sendJson(
-        ws,
-        createMessage('notification', { text: 'Mensaje invalido: falta type' })
-      );
+      sendJson(ws, createMessage('notification', { text: 'Invalid message: missing type' }));
       return;
     }
 
@@ -70,25 +57,12 @@ wss.on('connection', (ws) => {
     if (incoming.type === 'chat') {
       const userText = incoming?.payload?.text ?? '';
 
-      sendJson(
-        ws,
-        createMessage('chat', { text: userText }, 'user')
-      );
-
-      sendJson(
-        ws,
-        createMessage('chat', { text: getBotReply(userText) }, 'bot')
-      );
+      sendJson(ws, createMessage('chat', { text: userText }, 'user'));
+      sendJson(ws, createMessage('chat', { text: getBotReply(userText) }, 'bot'));
       return;
     }
 
-    sendJson(
-      ws,
-      createMessage('notification', { text: 'Tipo de mensaje no soportado' })
-    );
-  });
-
-  ws.on('close', () => {
+    sendJson(ws, createMessage('notification', { text: 'Unsupported message type' }));
   });
 });
 

@@ -1,11 +1,12 @@
-import { AfterViewInit, Component, OnDestroy, inject } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, inject } from '@angular/core';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
+import { filter, Subscription } from 'rxjs';
+import { gsap } from 'gsap';
 import { AuthService } from '../../core/services/auth.service';
 import { LanguageService } from '../../core/services/language.service';
 import { APP_ROUTES } from '../../core/constants/app-routes.constant';
-import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-navbar',
@@ -19,54 +20,30 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   private authService = inject(AuthService);
   private languageService = inject(LanguageService);
 
+  @ViewChild('navLinks', { static: true }) navLinksRef?: ElementRef<HTMLElement>;
+
   routes = APP_ROUTES;
   currentLang = this.languageService.getCurrentLang();
-  private observer!: MutationObserver;
+
+  private routerSubscription?: Subscription;
   private animatedLink?: HTMLElement;
-  private animation?: gsap.core.Tween;
+  private activeTween?: gsap.core.Tween;
 
-  ngAfterViewInit() {
-    const navLinks = document.querySelector('.nav-links');
-    if (!navLinks) return;
+  ngAfterViewInit(): void {
+    this.animateActiveLink();
 
-    const animateActive = () => {
-      const activeLink = navLinks.querySelector('.activo') as HTMLElement | null;
-
-      if (this.animatedLink && this.animatedLink !== activeLink) {
-        gsap.killTweensOf(this.animatedLink);
-        gsap.set(this.animatedLink, { clearProps: 'transform' });
-      }
-
-      if (!activeLink) {
-        this.animatedLink = undefined;
-        this.animation?.kill();
-        return;
-      }
-
-      if (this.animatedLink === activeLink) return;
-
-      this.animation?.kill();
-      gsap.set(activeLink, { clearProps: 'transform' });
-
-      this.animatedLink = activeLink;
-      this.animation = gsap.to(activeLink, {
-        scale: 1.08,
-        duration: 1.2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'power1.inOut'
-      });
-    };
-
-    this.observer = new MutationObserver(() => animateActive());
-    this.observer.observe(navLinks, { attributes: true, subtree: true, attributeFilter: ['class'] });
-
-    setTimeout(animateActive, 0);
+    this.routerSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => this.animateActiveLink());
   }
 
-  ngOnDestroy() {
-    if (this.observer) this.observer.disconnect();
-    if (this.animation) this.animation.kill();
+  ngOnDestroy(): void {
+    this.routerSubscription?.unsubscribe();
+    this.activeTween?.kill();
+
+    if (this.animatedLink) {
+      gsap.set(this.animatedLink, { clearProps: 'transform' });
+    }
   }
 
   changeLang(lang: string): void {
@@ -85,5 +62,43 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
+  }
+
+  private animateActiveLink(): void {
+    const navLinks = this.navLinksRef?.nativeElement;
+    if (!navLinks) return;
+
+    const activeLink = navLinks.querySelector('.activo') as HTMLElement | null;
+
+    if (!activeLink) {
+      this.stopPreviousAnimation();
+      this.animatedLink = undefined;
+      return;
+    }
+
+    if (this.animatedLink === activeLink) {
+      return;
+    }
+
+    this.stopPreviousAnimation();
+    this.animatedLink = activeLink;
+
+    this.activeTween = gsap.to(activeLink, {
+      scale: 1.08,
+      duration: 1.2,
+      repeat: -1,
+      yoyo: true,
+      ease: 'power1.inOut'
+    });
+  }
+
+  private stopPreviousAnimation(): void {
+    if (this.animatedLink) {
+      gsap.killTweensOf(this.animatedLink);
+      gsap.set(this.animatedLink, { clearProps: 'transform' });
+    }
+
+    this.activeTween?.kill();
+    this.activeTween = undefined;
   }
 }

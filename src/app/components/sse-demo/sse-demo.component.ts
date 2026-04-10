@@ -2,8 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { TranslatePipe } from '@ngx-translate/core';
-import { SseService } from '../../core/services/sse.service';
+import { REALTIME_ENDPOINTS } from '../../core/constants/realtime-endpoints.constant';
 import { SseMessage } from '../../core/models/sse-message';
+import { SseService } from '../../core/services/sse.service';
+import { formatEuropeanDateTime } from '../../core/utils/date-time.util';
 
 @Component({
   selector: 'app-sse-demo',
@@ -13,29 +15,33 @@ import { SseMessage } from '../../core/models/sse-message';
   styleUrl: './sse-demo.component.scss'
 })
 export class SseDemoComponent implements OnInit, OnDestroy {
-  mensajes: SseMessage[] = [];
-  estado = 'SSE.STATUS_CONNECTING';
-  private sseSub?: Subscription;
+  messages: SseMessage[] = [];
+  statusKey = 'SSE.STATUS_CONNECTING';
+  private sseSubscription?: Subscription;
 
   constructor(private sseService: SseService) {}
 
   ngOnInit(): void {
-    this.estado = 'SSE.STATUS_CONNECTING';
+    this.statusKey = 'SSE.STATUS_CONNECTING';
 
-    this.sseSub = this.sseService.connect('http://localhost:3001/events').subscribe({
+    this.sseSubscription = this.sseService.connect(REALTIME_ENDPOINTS.sse).subscribe({
       next: (data) => {
-        this.estado = 'SSE.STATUS_CONNECTED';
-        this.mensajes.unshift(data);
+        this.statusKey = 'SSE.STATUS_CONNECTED';
+        this.messages.unshift(data);
       },
-      error: (err) => {
-        this.estado = 'SSE.STATUS_ERROR';
-        console.error('Error SSE:', err);
+      error: (error) => {
+        this.statusKey = 'SSE.STATUS_ERROR';
+        console.error('SSE error:', error);
       }
     });
   }
 
   ngOnDestroy(): void {
-    this.sseSub?.unsubscribe();
-    this.estado = 'SSE.STATUS_DISCONNECTED';
+    this.sseSubscription?.unsubscribe();
+    this.statusKey = 'SSE.STATUS_DISCONNECTED';
+  }
+
+  formatTimestamp(value: string | Date): string {
+    return formatEuropeanDateTime(value);
   }
 }

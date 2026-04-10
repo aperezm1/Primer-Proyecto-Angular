@@ -2,12 +2,14 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { TranslatePipe } from '@ngx-translate/core';
+import { gsap } from 'gsap';
 import { CardComponent } from '../../components/card/card.component';
 import { FooterComponent } from '../../components/footer/footer.component';
-import { gsap } from 'gsap';
-import { WebsocketChatService } from '../../core/services/websocket-chat.service';
+import { REALTIME_ENDPOINTS } from '../../core/constants/realtime-endpoints.constant';
 import { WsConnectionState } from '../../core/models/ws-connection-state';
-import { WsMessage } from '../../core/models/ws-message';
+import { WsMessage, WsMessageType } from '../../core/models/ws-message';
+import { WebsocketChatService } from '../../core/services/websocket-chat.service';
+import { formatEuropeanDateTime } from '../../core/utils/date-time.util';
 
 @Component({
   selector: 'app-home',
@@ -17,20 +19,20 @@ import { WsMessage } from '../../core/models/ws-message';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  autor = 'Adrian Perez Morales';
+  author = 'Adrian Perez Morales';
 
   wsState: WsConnectionState = 'closed';
   chatInput = '';
   chatMessages: WsMessage[] = [];
   notifications: WsMessage[] = [];
-  chatOpen = false;
+  isChatOpen = false;
 
   private subscriptions = new Subscription();
 
-  constructor(private websocketChatService: WebsocketChatService) { }
+  constructor(private websocketChatService: WebsocketChatService) {}
 
   ngOnInit(): void {
-    this.websocketChatService.connect('ws://localhost:3002');
+    this.websocketChatService.connect(REALTIME_ENDPOINTS.websocket);
 
     this.subscriptions.add(
       this.websocketChatService.connectionState$.subscribe((state) => {
@@ -38,35 +40,16 @@ export class HomeComponent implements OnInit, OnDestroy {
       })
     );
 
-    this.subscriptions.add(
-      this.websocketChatService.messagesByType('chat').subscribe((msg) => {
-        this.chatMessages.unshift(msg);
-      })
-    );
-
-    this.subscriptions.add(
-      this.websocketChatService.messagesByType('notification').subscribe((msg) => {
-        this.notifications.unshift(msg);
-      })
-    );
-
-    this.subscriptions.add(
-      this.websocketChatService.messagesByType('pong').subscribe((msg) => {
-        this.notifications.unshift({
-          ...msg,
-          payload: { text: 'PONG recibido' }
-        });
-      })
-    );
-
-    this.subscriptions.add(
-      this.websocketChatService.messagesByType('status').subscribe((msg) => {
-        this.notifications.unshift(msg);
-      })
-    );
+    this.addTypeStream('chat', this.chatMessages);
+    this.addTypeStream('notification', this.notifications);
+    this.addTypeStream('status', this.notifications);
+    this.addTypeStream('pong', this.notifications, (msg) => ({
+      ...msg,
+      payload: { text: 'PONG received' }
+    }));
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     gsap.from('.welcome-message', {
       y: -50,
       opacity: 1,
@@ -96,15 +79,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   openChat(): void {
-    this.chatOpen = true;
+    this.isChatOpen = true;
   }
 
   closeChat(): void {
-    this.chatOpen = false;
+    this.isChatOpen = false;
   }
 
   toggleChat(): void {
-    this.chatOpen = !this.chatOpen;
+    this.isChatOpen = !this.isChatOpen;
   }
 
   onOverlayClick(event: MouseEvent): void {
@@ -113,27 +96,24 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  formatTimestamp(value: string | Date): string {
+    return formatEuropeanDateTime(value);
+  }
+
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
     this.websocketChatService.close();
   }
 
-  formatTimestamp(value: string | Date): string {
-    const date = value instanceof Date ? value : new Date(value);
-
-    if (Number.isNaN(date.getTime())) {
-      return '';
-    }
-
-    return new Intl.DateTimeFormat('es-ES', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false,
-      timeZone: 'Europe/Madrid'
-    }).format(date);
+  private addTypeStream(
+    type: WsMessageType,
+    target: WsMessage[],
+    transform?: (msg: WsMessage) => WsMessage
+  ): void {
+    this.subscriptions.add(
+      this.websocketChatService.messagesByType(type).subscribe((msg) => {
+        target.unshift(transform ? transform(msg) : msg);
+      })
+    );
   }
 }
