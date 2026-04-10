@@ -1,5 +1,5 @@
 export interface SseMessage {
   timestamp: string;
-  message: string;
+  messageKey: string;
   value: number;
 }

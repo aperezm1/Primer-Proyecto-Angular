@@ -11,22 +11,29 @@ const server = http.createServer((req, res) => {
       'Access-Control-Allow-Origin': '*'
     });
 
-    const sendEvent = () => {
+    let progress = 0;
+
+    const sendProgressEvent = () => {
+      progress = (progress + Math.floor(Math.random() * 15) + 5) % 101;
+
       const payload = {
         timestamp: new Date().toISOString(),
-        message: 'Evento SSE de prueba',
-        value: Math.floor(Math.random() * 100)
+        messageKey: 'SSE.PROGRESS_MESSAGE',
+        value: progress
       };
+
+      res.write('event: progress\n');
       res.write('data: ' + JSON.stringify(payload) + '\n\n');
     };
 
-    sendEvent();
-    const interval = setInterval(sendEvent, 5000);
+    sendProgressEvent();
+    const interval = setInterval(sendProgressEvent, 5000);
 
     req.on('close', () => {
       clearInterval(interval);
       res.end();
     });
+
     return;
   }
 

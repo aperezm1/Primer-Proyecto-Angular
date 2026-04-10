@@ -3,12 +3,20 @@
     <div class="admin-container">
       <h1 class="admin-title">{{ 'ADMIN.TITLE' | translate }}</h1>
       <p class="admin-text">{{ 'ADMIN.TEXT' | translate }}</p>
-      <button type="button" class="button main-btn" routerLink="/logs">Ver Logs</button>
+      <button type="button" class="button main-btn" routerLink="/logs">
+        {{ 'ADMIN.LOGS_BTN' | translate }}
+      </button>
     </div>
     <div class="timeline-controls">
-      <button type="button" class="control-btn" (click)="playTimeline()">Play</button>
-      <button type="button" class="control-btn" (click)="pauseTimeline()">Pause</button>
-      <button type="button" class="control-btn" (click)="reverseTimeline()">Reverse</button>
+      <button type="button" class="control-btn" (click)="playTimeline()">
+        {{ 'ADMIN.PLAY_BTN' | translate }}
+      </button>
+      <button type="button" class="control-btn" (click)="pauseTimeline()">
+        {{ 'ADMIN.PAUSE_BTN' | translate }}
+      </button>
+      <button type="button" class="control-btn" (click)="reverseTimeline()">
+        {{ 'ADMIN.REVERSE_BTN' | translate }}
+      </button>
     </div>
   </div>
 </section>

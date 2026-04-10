@@ -10,27 +10,28 @@ export class SseService {
 
   connect(url: string): Observable<SseMessage> {
     return new Observable<SseMessage>((observer) => {
-      this.ngZone.runOutsideAngular(() => {
-        const eventSource = new EventSource(url);
+      const eventSource = new EventSource(url);
 
-        eventSource.onmessage = (event: MessageEvent) => {
+      this.ngZone.runOutsideAngular(() => {
+        eventSource.addEventListener('progress', (event: Event) => {
           try {
-            const parsed = JSON.parse(event.data) as SseMessage;
+            const messageEvent = event as MessageEvent;
+            const parsed = JSON.parse(messageEvent.data) as SseMessage;
             this.ngZone.run(() => observer.next(parsed));
           } catch (parseError) {
             this.ngZone.run(() => observer.error(parseError));
           }
-        };
+        });
 
         eventSource.onerror = (error) => {
           this.ngZone.run(() => observer.error(error));
           eventSource.close();
         };
-
-        return () => {
-          eventSource.close();
-        };
       });
+
+      return () => {
+        eventSource.close();
+      };
     });
   }
 }

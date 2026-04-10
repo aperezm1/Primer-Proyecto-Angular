@@ -66,7 +66,11 @@
   "ADMIN": {
     "TITLE": "Panel de administración",
     "TEXT": "Bienvenido al panel de administración. Aquí puedes gestionar tu aplicación.",
-    "BTN": "Ver estadísticas"
+    "BTN": "Ver estadísticas",
+    "LOGS_BTN": "Ver Logs",
+    "PLAY_BTN": "Reproducir",
+    "PAUSE_BTN": "Pausar",
+    "REVERSE_BTN": "Invertir"
   },
   "PRACTICE": {
     "DIRECTIVES": {
@@ -113,6 +117,18 @@
       "BOLD_TITLE": "Pipe de texto en negrita",
       "AGE_TITLE": "Pipe de edad"
     }
+  },
+  "LOGS": {
+    "TITLE": "Sistema de Logs en Tiempo Real",
+    "SUBTITLE": "Eventos SSE capturados en vivo"
+  },
+  "SSE": {
+    "STATUS_LABEL": "Estado",
+    "STATUS_CONNECTING": "Conectando...",
+    "STATUS_CONNECTED": "Conectado ✓",
+    "STATUS_DISCONNECTED": "Desconectado",
+    "STATUS_ERROR": "Error de conexión",
+    "PROGRESS_MESSAGE": "Progreso del proceso: {{ value }}%"
   },
   "FOOTER": {
     "CONTACT": "Contacto"
