@@ -1,0 +1,132 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+
+.logs-layout {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: 'Courier New', monospace;
+}
+
+.logs-page {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logs-container {
+  width: min(1000px, 100%);
+}
+
+.logs-header,
+.logs-terminal {
+  width: 100%;
+}
+
+.logs-header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #00ff00;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+
+  h1 {
+    font-size: 2rem;
+    margin: 0 0 10px;
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  p {
+    color: #00dd00;
+    opacity: 0.8;
+    margin: 0;
+  }
+}
+
+.logs-terminal {
+  background: #1a1a2e;
+  border: 2px solid #00ff00;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.3),
+    inset 0 0 10px rgba(0, 0, 0, 0.5);
+  
+  app-sse-demo {
+    ::ng-deep {
+      h3 {
+        color: #00ff00;
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-height: 400px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #0f0f1e;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: #00ff00;
+          border-radius: 4px;
+
+          &:hover {
+            background: #00dd00;
+          }
+        }
+      }
+
+      li {
+        padding: 10px 12px;
+        margin: 5px 0;
+        background: rgba(0, 255, 0, 0.05);
+        border-left: 3px solid #00ff00;
+        color: #00dd00;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        animation: slideIn 0.3s ease-out;
+        border-radius: 2px;
+        word-break: break-all;
+
+        strong {
+          color: #00ff00;
+          text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+      }
+    }
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 255, 0, 0.6), 0 0 30px rgba(0, 255, 0, 0.3);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

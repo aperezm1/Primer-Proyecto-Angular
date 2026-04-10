@@ -1,10 +1,11 @@
 import { Component, OnDestroy } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-admin',
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, RouterModule],
   standalone: true,
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss'

@@ -19,4 +19,9 @@ export const routes: Routes = [
         canActivate: [authGuard]
     },
     { path: 'practice', component: PracticeComponent },
+    {
+        path: 'logs',
+        loadComponent: () => import('./pages/logs/logs.component').then(m => m.LogsComponent),
+        canActivate: [authGuard]
+    }
 ];

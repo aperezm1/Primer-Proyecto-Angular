@@ -1,0 +1,9 @@
+<div class="sse-status">Estado: {{ estado }}</div>
+
+<ul>
+  @for (msg of mensajes; track $index) {
+    <li>
+      <strong>{{ msg.timestamp }}</strong> - {{ msg.message }} ({{ msg.value }})
+    </li>
+  }
+</ul>
