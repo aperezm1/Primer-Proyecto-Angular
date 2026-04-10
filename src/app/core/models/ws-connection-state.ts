@@ -1,0 +1,1 @@
+export type WsConnectionState = 'connecting' | 'connected' | 'reconnecting' | 'error' | 'closed';

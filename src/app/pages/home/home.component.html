@@ -25,4 +25,62 @@
   </div>
 </div>
 
+<button
+  type="button"
+  class="chat-fab"
+  (click)="toggleChat()"
+  aria-label="Abrir chat bot">
+  🤖
+</button>
+
+@if (chatOpen) {
+  <div class="chat-modal-overlay" (click)="onOverlayClick($event)">
+    <section class="chat-modal" role="dialog" aria-modal="true" aria-label="Chatbot">
+      <header class="chat-modal-header">
+        <h2>Chatbot WS</h2>
+        <button type="button" class="chat-close" (click)="closeChat()">×</button>
+      </header>
+
+      <p class="chat-status">Estado: {{ wsState }}</p>
+
+      <div class="chatbot-controls">
+        <input
+          type="text"
+          [(ngModel)]="chatInput"
+          placeholder="Escribe un mensaje..."
+          (keyup.enter)="sendMessage()" />
+        <button type="button" (click)="sendMessage()">Enviar</button>
+        <button type="button" (click)="sendPing()">Ping</button>
+      </div>
+
+      <div class="chatbot-grid">
+        <article class="chat-panel">
+          <h3>Chat</h3>
+          <ul>
+            @for (msg of chatMessages; track $index) {
+              <li>
+                <strong>[{{ msg.from }}]</strong>
+                {{ msg.payload.text }}
+                <span>{{ msg.timestamp }}</span>
+              </li>
+            }
+          </ul>
+        </article>
+
+        <article class="chat-panel">
+          <h3>Notificaciones</h3>
+          <ul>
+            @for (msg of notifications; track $index) {
+              <li>
+                {{ msg.payload.text }}
+                <span>{{ msg.timestamp }}</span>
+              </li>
+            }
+          </ul>
+        </article>
+      </div>
+    </section>
+  </div>
+}
+
 <app-footer></app-footer>
