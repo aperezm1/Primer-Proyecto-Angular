@@ -1,4 +1,5 @@
 const { WebSocketServer } = require('ws');
+
 const PORT = 3002;
 const wss = new WebSocketServer({ port: PORT });
 
@@ -19,27 +20,31 @@ function createMessage(type, payload, from = 'system') {
   };
 }
 
-function getBotReply(text) {
+function getBotReplyKey(text) {
   const normalized = text.trim().toLowerCase();
 
-  if (normalized.includes('hola')) return 'Hola, soy tu bot de prueba.';
-  if (normalized.includes('angular')) return 'Angular 19 + RxJS + WebSocket funciona muy bien.';
-  if (normalized.includes('gracias')) return 'De nada. ¿Quieres que te ayude con otro ejercicio?';
-  if (normalized.includes('adios') || normalized.includes('adiós')) return 'Hasta luego.';
-  if (normalized.includes('plexus')) return 'Plexus Tech es una maravilla y os va a contratar a todos.';
-  return 'Mensaje recibido. Esta es una respuesta predeterminada.';
+  if (normalized.includes('hola') || normalized.includes('hello') || normalized.includes('hi')) {
+    return 'WS.BOT.HELLO';
+  }
+  if (normalized.includes('angular')) {
+    return 'WS.BOT.ANGULAR';
+  }
+  if (normalized.includes('gracias') || normalized.includes('thanks')) {
+    return 'WS.BOT.THANKS';
+  }
+  if (normalized.includes('adios') || normalized.includes('adiós') || normalized.includes('bye')) {
+    return 'WS.BOT.BYE';
+  }
+  if (normalized.includes('plexus')) {
+    return 'WS.BOT.PLEXUS';
+  }
+
+  return 'WS.BOT.DEFAULT';
 }
 
 wss.on('connection', (ws) => {
-  sendJson(
-    ws,
-    createMessage('status', { text: 'Conexion WebSocket abierta' })
-  );
-
-  sendJson(
-    ws,
-    createMessage('notification', { text: 'Chatbot listo para responder' })
-  );
+  sendJson(ws, createMessage('status', { textKey: 'WS.STATUS.OPEN' }));
+  sendJson(ws, createMessage('notification', { textKey: 'WS.NOTIFICATION.READY' }));
 
   ws.on('message', (raw) => {
     let incoming;
@@ -47,48 +52,29 @@ wss.on('connection', (ws) => {
     try {
       incoming = JSON.parse(raw.toString());
     } catch (error) {
-      sendJson(
-        ws,
-        createMessage('notification', { text: 'Mensaje invalido: JSON incorrecto' })
-      );
+      sendJson(ws, createMessage('notification', { textKey: 'WS.ERROR.INVALID_JSON' }));
       return;
     }
 
     if (!incoming?.type) {
-      sendJson(
-        ws,
-        createMessage('notification', { text: 'Mensaje invalido: falta type' })
-      );
+      sendJson(ws, createMessage('notification', { textKey: 'WS.ERROR.MISSING_TYPE' }));
       return;
     }
 
     if (incoming.type === 'ping') {
-      sendJson(ws, createMessage('pong', { text: 'pong' }));
+      sendJson(ws, createMessage('pong', { textKey: 'WS.PONG' }));
       return;
     }
 
     if (incoming.type === 'chat') {
       const userText = incoming?.payload?.text ?? '';
 
-      sendJson(
-        ws,
-        createMessage('chat', { text: userText }, 'user')
-      );
-
-      sendJson(
-        ws,
-        createMessage('chat', { text: getBotReply(userText) }, 'bot')
-      );
+      sendJson(ws, createMessage('chat', { text: userText }, 'user'));
+      sendJson(ws, createMessage('chat', { textKey: getBotReplyKey(userText) }, 'bot'));
       return;
     }
 
-    sendJson(
-      ws,
-      createMessage('notification', { text: 'Tipo de mensaje no soportado' })
-    );
-  });
-
-  ws.on('close', () => {
+    sendJson(ws, createMessage('notification', { textKey: 'WS.ERROR.UNSUPPORTED_TYPE' }));
   });
 });
 

@@ -16,8 +16,19 @@ export class SseService {
         eventSource.addEventListener('progress', (event: Event) => {
           try {
             const messageEvent = event as MessageEvent;
-            const parsed = JSON.parse(messageEvent.data) as SseMessage;
-            this.ngZone.run(() => observer.next(parsed));
+            const parsed = JSON.parse(messageEvent.data) as Partial<SseMessage>;
+
+            if (!parsed.timestamp || !parsed.messageKey) {
+              return;
+            }
+
+            this.ngZone.run(() =>
+              observer.next({
+                timestamp: String(parsed.timestamp),
+                messageKey: String(parsed.messageKey),
+                value: Number(parsed.value ?? 0)
+              })
+            );
           } catch (parseError) {
             this.ngZone.run(() => observer.error(parseError));
           }

@@ -8,7 +8,7 @@
     </select>
   </div>
 
-  <div class="nav-links">
+  <div class="nav-links" #navLinks>
     <a [routerLink]="routes.home" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">
       {{ 'NAV.HOME' | translate }}
     </a>
