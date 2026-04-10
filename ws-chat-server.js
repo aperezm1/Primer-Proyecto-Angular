@@ -1,4 +1,5 @@
 const { WebSocketServer } = require('ws');
+
 const PORT = 3002;
 const wss = new WebSocketServer({ port: PORT });
 
@@ -19,20 +20,31 @@ function createMessage(type, payload, from = 'system') {
   };
 }
 
-function getBotReply(text) {
+function getBotReplyKey(text) {
   const normalized = text.trim().toLowerCase();
 
-  if (normalized.includes('hello') || normalized.includes('hi')) return 'Hello, I am your demo bot.';
-  if (normalized.includes('angular')) return 'Angular 19 + RxJS + WebSocket works great.';
-  if (normalized.includes('thanks')) return 'You are welcome. Need help with another exercise?';
-  if (normalized.includes('bye')) return 'See you later.';
-  if (normalized.includes('plexus')) return 'Plexus Tech sounds awesome.';
-  return 'Message received. This is a predefined response.';
+  if (normalized.includes('hola') || normalized.includes('hello') || normalized.includes('hi')) {
+    return 'WS.BOT.HELLO';
+  }
+  if (normalized.includes('angular')) {
+    return 'WS.BOT.ANGULAR';
+  }
+  if (normalized.includes('gracias') || normalized.includes('thanks')) {
+    return 'WS.BOT.THANKS';
+  }
+  if (normalized.includes('adios') || normalized.includes('adiós') || normalized.includes('bye')) {
+    return 'WS.BOT.BYE';
+  }
+  if (normalized.includes('plexus')) {
+    return 'WS.BOT.PLEXUS';
+  }
+
+  return 'WS.BOT.DEFAULT';
 }
 
 wss.on('connection', (ws) => {
-  sendJson(ws, createMessage('status', { text: 'WebSocket connection opened' }));
-  sendJson(ws, createMessage('notification', { text: 'Chatbot is ready' }));
+  sendJson(ws, createMessage('status', { textKey: 'WS.STATUS.OPEN' }));
+  sendJson(ws, createMessage('notification', { textKey: 'WS.NOTIFICATION.READY' }));
 
   ws.on('message', (raw) => {
     let incoming;
@@ -40,17 +52,17 @@ wss.on('connection', (ws) => {
     try {
       incoming = JSON.parse(raw.toString());
     } catch (error) {
-      sendJson(ws, createMessage('notification', { text: 'Invalid message: malformed JSON' }));
+      sendJson(ws, createMessage('notification', { textKey: 'WS.ERROR.INVALID_JSON' }));
       return;
     }
 
     if (!incoming?.type) {
-      sendJson(ws, createMessage('notification', { text: 'Invalid message: missing type' }));
+      sendJson(ws, createMessage('notification', { textKey: 'WS.ERROR.MISSING_TYPE' }));
       return;
     }
 
     if (incoming.type === 'ping') {
-      sendJson(ws, createMessage('pong', { text: 'pong' }));
+      sendJson(ws, createMessage('pong', { textKey: 'WS.PONG' }));
       return;
     }
 
@@ -58,11 +70,11 @@ wss.on('connection', (ws) => {
       const userText = incoming?.payload?.text ?? '';
 
       sendJson(ws, createMessage('chat', { text: userText }, 'user'));
-      sendJson(ws, createMessage('chat', { text: getBotReply(userText) }, 'bot'));
+      sendJson(ws, createMessage('chat', { textKey: getBotReplyKey(userText) }, 'bot'));
       return;
     }
 
-    sendJson(ws, createMessage('notification', { text: 'Unsupported message type' }));
+    sendJson(ws, createMessage('notification', { textKey: 'WS.ERROR.UNSUPPORTED_TYPE' }));
   });
 });
 

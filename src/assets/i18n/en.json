@@ -140,6 +140,29 @@
     "STATUS_ERROR": "Connection error",
     "PROGRESS_MESSAGE": "Process progress: {{ value }}%"
   },
+  "WS": {
+    "PING": "ping",
+    "PONG": "PONG received",
+    "STATUS": {
+      "OPEN": "WebSocket connection opened"
+    },
+    "NOTIFICATION": {
+      "READY": "Chatbot is ready"
+    },
+    "ERROR": {
+      "INVALID_JSON": "Invalid message: malformed JSON",
+      "MISSING_TYPE": "Invalid message: missing type",
+      "UNSUPPORTED_TYPE": "Unsupported message type"
+    },
+    "BOT": {
+      "HELLO": "Hello, I am your demo bot.",
+      "ANGULAR": "Angular 19 + RxJS + WebSocket works great.",
+      "THANKS": "You are welcome. Need help with another exercise?",
+      "BYE": "See you later.",
+      "PLEXUS": "Plexus Tech is awesome and will hire you all.",
+      "DEFAULT": "Message received. This is a predefined response."
+    }
+  },
   "FOOTER": {
     "CONTACT": "Contact"
   }

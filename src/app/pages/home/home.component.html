@@ -60,7 +60,11 @@
             @for (msg of chatMessages; track $index) {
               <li>
                 <strong>[{{ msg.from }}]</strong>
-                {{ msg.payload.text }}
+                @if (getMessageKey(msg)) {
+                  {{ getMessageKey(msg)! | translate: msg.payload.params }}
+                } @else {
+                  {{ getMessageText(msg) }}
+                }
                 <span>{{ formatTimestamp(msg.timestamp) }}</span>
               </li>
             }
@@ -72,7 +76,11 @@
           <ul>
             @for (msg of notifications; track $index) {
               <li>
-                {{ msg.payload.text }}
+                @if (getMessageKey(msg)) {
+                  {{ getMessageKey(msg)! | translate: msg.payload.params }}
+                } @else {
+                  {{ getMessageText(msg) }}
+                }
                 <span>{{ formatTimestamp(msg.timestamp) }}</span>
               </li>
             }

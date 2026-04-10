@@ -43,10 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.addTypeStream('chat', this.chatMessages);
     this.addTypeStream('notification', this.notifications);
     this.addTypeStream('status', this.notifications);
-    this.addTypeStream('pong', this.notifications, (msg) => ({
-      ...msg,
-      payload: { text: 'PONG received' }
-    }));
+    this.addTypeStream('pong', this.notifications);
   }
 
   ngAfterViewInit(): void {
@@ -78,10 +75,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.websocketChatService.sendPing();
   }
 
-  openChat(): void {
-    this.isChatOpen = true;
-  }
-
   closeChat(): void {
     this.isChatOpen = false;
   }
@@ -100,19 +93,23 @@ export class HomeComponent implements OnInit, OnDestroy {
     return formatEuropeanDateTime(value);
   }
 
+  getMessageText(msg: WsMessage): string {
+    return msg.payload.text ?? '';
+  }
+
+  getMessageKey(msg: WsMessage): string | null {
+    return msg.payload.textKey ?? null;
+  }
+
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
     this.websocketChatService.close();
   }
 
-  private addTypeStream(
-    type: WsMessageType,
-    target: WsMessage[],
-    transform?: (msg: WsMessage) => WsMessage
-  ): void {
+  private addTypeStream(type: WsMessageType, target: WsMessage[]): void {
     this.subscriptions.add(
       this.websocketChatService.messagesByType(type).subscribe((msg) => {
-        target.unshift(transform ? transform(msg) : msg);
+        target.unshift(msg);
       })
     );
   }

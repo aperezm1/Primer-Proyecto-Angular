@@ -1,7 +1,9 @@
 export type WsMessageType = 'chat' | 'notification' | 'status' | 'ping' | 'pong';
 
 export interface WsPayload {
-  text: string;
+  text?: string;
+  textKey?: string;
+  params?: Record<string, string | number>;
 }
 
 export interface WsMessage {

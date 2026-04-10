@@ -62,11 +62,11 @@ export class WebsocketChatService {
   }
 
   sendChat(text: string): void {
-    this.send('chat', text, 'user');
+    this.send('chat', { text }, 'user');
   }
 
   sendPing(): void {
-    this.send('ping', 'ping', 'system');
+    this.send('ping', { textKey: 'WS.PING' }, 'system');
   }
 
   messagesByType(type: WsMessageType): Observable<WsMessage> {
@@ -80,14 +80,14 @@ export class WebsocketChatService {
     this.connectionStateSubject.next('closed');
   }
 
-  private send(type: WsMessageType, text: string, from: WsMessage['from']): void {
+  private send(type: WsMessageType, payload: WsMessage['payload'], from: WsMessage['from']): void {
     if (!this.socket || this.socket.closed) {
       return;
     }
 
     this.socket.next({
       type,
-      payload: { text },
+      payload,
       from,
       timestamp: new Date().toISOString()
     });
@@ -95,11 +95,14 @@ export class WebsocketChatService {
 
   private deserializeMessage(rawData: unknown): WsMessage {
     const parsed = JSON.parse(String(rawData)) as Partial<WsMessage>;
+    const payload = parsed.payload ?? {};
 
     return {
       type: this.normalizeType(parsed.type),
       payload: {
-        text: parsed.payload?.text ? String(parsed.payload.text) : ''
+        text: payload.text ? String(payload.text) : undefined,
+        textKey: payload.textKey ? String(payload.textKey) : undefined,
+        params: payload.params && typeof payload.params === 'object' ? payload.params : undefined
       },
       from: parsed.from ?? 'system',
       timestamp: parsed.timestamp ? String(parsed.timestamp) : new Date().toISOString()
@@ -107,15 +110,14 @@ export class WebsocketChatService {
   }
 
   private normalizeType(type: unknown): WsMessageType {
-    if (type === 'chat' || type === 'notification' || type === 'status' || type === 'ping' || type === 'pong') {
-      return type;
-    }
-
-    return 'notification';
+    const allowed: WsMessageType[] = ['chat', 'notification', 'status', 'ping', 'pong'];
+    return allowed.includes(type as WsMessageType) ? (type as WsMessageType) : 'notification';
   }
 
   private isValidMessage(message: WsMessage): boolean {
-    return !!message?.type && !!message?.payload && typeof message.payload.text === 'string' && !!message.timestamp;
+    const hasText = typeof message.payload?.text === 'string' && message.payload.text.length > 0;
+    const hasTextKey = typeof message.payload?.textKey === 'string' && message.payload.textKey.length > 0;
+    return !!message?.type && !!message?.payload && !!message.timestamp && (hasText || hasTextKey);
   }
 
   private tryReconnect(url: string): void {
