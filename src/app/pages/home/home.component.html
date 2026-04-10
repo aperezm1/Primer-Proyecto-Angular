@@ -61,7 +61,7 @@
               <li>
                 <strong>[{{ msg.from }}]</strong>
                 {{ msg.payload.text }}
-                <span>{{ msg.timestamp }}</span>
+                <span>{{ formatTimestamp(msg.timestamp) }}</span>
               </li>
             }
           </ul>
@@ -73,7 +73,7 @@
             @for (msg of notifications; track $index) {
               <li>
                 {{ msg.payload.text }}
-                <span>{{ msg.timestamp }}</span>
+                <span>{{ formatTimestamp(msg.timestamp) }}</span>
               </li>
             }
           </ul>

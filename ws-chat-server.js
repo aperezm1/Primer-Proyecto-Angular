@@ -26,6 +26,7 @@ function getBotReply(text) {
   if (normalized.includes('angular')) return 'Angular 19 + RxJS + WebSocket funciona muy bien.';
   if (normalized.includes('gracias')) return 'De nada. ¿Quieres que te ayude con otro ejercicio?';
   if (normalized.includes('adios') || normalized.includes('adiós')) return 'Hasta luego.';
+  if (normalized.includes('plexus')) return 'Plexus Tech es una maravilla y os va a contratar a todos.';
   return 'Mensaje recibido. Esta es una respuesta predeterminada.';
 }
 
@@ -88,7 +89,6 @@ wss.on('connection', (ws) => {
   });
 
   ws.on('close', () => {
-    console.log('WebSocket connection closed');
   });
 });
 

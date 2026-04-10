@@ -52,10 +52,10 @@
 
       <article class="card">
         <h3>{{ 'PRACTICE.PIPES.DATE_TITLE' | translate }}</h3>
-        <p><strong>{{ 'PRACTICE.PIPES.DATE_SHORT' | translate }}:</strong> {{ currentDate | date:'shortDate' }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.DATE_LONG' | translate }}:</strong> {{ currentDate | date:'fullDate' }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.DATE_TIME' | translate }}:</strong> {{ currentDate | date:'shortTime' }}</p>
-        <p><strong>{{ 'PRACTICE.PIPES.DATE_FULL' | translate }}:</strong> {{ currentDate | date:'full' }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.DATE_SHORT' | translate }}:</strong> {{ currentDate | date:'dd/MM/yyyy':'Europe/Madrid':'es-ES' }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.DATE_LONG' | translate }}:</strong> {{ currentDate | date:'EEEE, d MMMM y':'Europe/Madrid':'es-ES' }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.DATE_TIME' | translate }}:</strong> {{ currentDate | date:'HH:mm:ss':'Europe/Madrid':'es-ES' }}</p>
+        <p><strong>{{ 'PRACTICE.PIPES.DATE_FULL' | translate }}:</strong> {{ currentDate | date:'dd/MM/yyyy HH:mm:ss':'Europe/Madrid':'es-ES' }}</p>
       </article>
 
       <article class="card">
@@ -105,7 +105,7 @@
       </article>
 
       <article class="card">
-        <h3>{{ 'PRACTICE.PIPES_CUSTOM.AGE_TITLE' | translate }}: {{ birthDate | date:'yyyy-MM-dd' }}</h3>
+        <h3>{{ 'PRACTICE.PIPES_CUSTOM.AGE_TITLE' | translate }}: {{ birthDate | date:'dd/MM/yyyy' }}</h3>
         <p>{{ birthDate | age }}</p>
       </article>
     </div>
